@@ -7,6 +7,7 @@ extends State
 @onready var animation_player : AnimationPlayer = $"../../AnimationPlayer"
 @onready var animation_attack : AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AttackAnimation"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
+@onready var hurt_box : HurtBox = $"../../Interactions/HurtBox"
 
 @onready var walk : State = $"../Walk"
 @onready var idle : State = $"../Idle"
@@ -26,6 +27,9 @@ func Enter() -> void:
 	audio.play()
 	
 	attacking = true
+	
+	await get_tree().create_timer(0.075).timeout
+	hurt_box.monitoring = true
 
 # What happen during the _process update in this state
 func Process(_delta) -> State:
@@ -43,6 +47,7 @@ func Process(_delta) -> State:
 func Exit() -> void:
 	animation_player.animation_finished.disconnect(EndAttack)
 	attacking = false
+	hurt_box.monitoring = false
 	
 func EndAttack(_newAnimName:String):
 	attacking = false
