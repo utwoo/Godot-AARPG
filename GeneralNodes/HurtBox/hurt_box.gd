@@ -7,6 +7,6 @@ extends Area2D
 func _ready():
 	area_entered.connect(AreaEntered)
 
-func AreaEntered(area2d: Area2D):
+func AreaEntered(area2d:Area2D):
 	if area2d is HitBox:
 		area2d.TakeDamage(damage)

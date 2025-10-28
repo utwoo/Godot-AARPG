@@ -3,11 +3,9 @@ extends Node2D
 
 @onready var player = $".."
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.DirectionChanged.connect(UpdateDirection)
-	pass # Replace with function body.
 
 func UpdateDirection(new_direction:Vector2):
 	match new_direction:

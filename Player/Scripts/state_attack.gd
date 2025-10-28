@@ -2,12 +2,12 @@ class_name State_Attack
 extends State
 
 @export var attack_sound : AudioStream
-@export_range(1,20,0.5) var decelerate_speed : float = 5
+@export_range(1, 20, 0.5) var decelerate_speed : float = 5
 
 @onready var animation_player : AnimationPlayer = $"../../AnimationPlayer"
 @onready var animation_attack : AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AttackAnimation"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
-@onready var hurt_box : HurtBox = $"../../Interactions/HurtBox"
+@onready var hurt_box : HurtBox = %AttackHurtBox
 
 @onready var walk : State = $"../Walk"
 @onready var idle : State = $"../Idle"
@@ -19,7 +19,6 @@ func Enter() -> void:
 	# attack and effect
 	player.UpdateAnimation("attack")
 	animation_attack.play("attack_" + player.AnimDirection())
-	
 	animation_player.animation_finished.connect(EndAttack)
 	# attack sound
 	audio.stream = attack_sound
