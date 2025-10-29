@@ -14,6 +14,10 @@ config/name="AARPG"
 run/main_scene="uid://1vlv0ud838ra"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+LevelManager="*res://00_Globals/GlobalLevelManager.gd"
+
 [display]
 
 window/size/viewport_width=480

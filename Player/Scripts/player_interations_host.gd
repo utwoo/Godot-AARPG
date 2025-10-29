@@ -1,4 +1,4 @@
-class_name PlaerInterationsHost
+class_name PlayerInterationsHost
 extends Node2D
 
 @onready var player = $".."
