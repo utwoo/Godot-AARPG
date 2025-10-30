@@ -5,8 +5,8 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	area_entered.connect(AreaEntered)
+	area_entered.connect(entered)
 
-func AreaEntered(area2d:Area2D):
+func entered( area2d : Area2D ):
 	if area2d is HitBox:
-		area2d.TakeDamage(damage)
+		area2d.take_damage(damage)

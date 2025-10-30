@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnuj66g5vdefk"]
+[gd_scene load_steps=31 format=3 uid="uid://cnuj66g5vdefk"]
 
 [ext_resource type="Script" uid="uid://dg222w5ha7asu" path="res://Player/Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://o3e3kn504do0" path="res://Player/Sprites/PlayerSprite02.png" id="2_bw35f"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://p0ntrtlxut6t" path="res://Player/Scripts/state_attack.gd" id="6_xwb2w"]
 [ext_resource type="AudioStream" uid="uid://vhklc13rqe38" path="res://Player/Audio/SwordSwoosh.wav" id="8_2hb64"]
 [ext_resource type="PackedScene" uid="uid://dq06virodhfm8" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="10_vov0p"]
-[ext_resource type="Script" uid="uid://rkgi3v2ee2dt" path="res://Player/Scripts/player_interations_host.gd" id="10_yq18l"]
 [ext_resource type="Script" uid="uid://lshrnoylapuq" path="res://Player/Scripts/player_camera.gd" id="11_n8jjm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maef2"]
@@ -545,6 +544,3 @@ script = ExtResource("11_n8jjm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 max_polyphony = 4
-
-[node name="Interactions" type="Node2D" parent="."]
-script = ExtResource("10_yq18l")

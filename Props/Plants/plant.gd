@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HitBox.Damaged.connect(TakeDamage)
+	$HitBox.damaged.connect(take_damage)
 
-func TakeDamage(_damage):
+func take_damage(_damage):
 	queue_free()
