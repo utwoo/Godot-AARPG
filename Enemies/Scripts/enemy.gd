@@ -2,8 +2,8 @@ class_name Enemy
 extends CharacterBody2D
 
 signal direction_changed( new_direction : Vector2 )
-signal enemy_damaged()
-signal enemy_destroy()
+signal enemy_damaged( hurt_box : HurtBox )
+signal enemy_destroy( hurt_box : HurtBox )
   
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
@@ -47,7 +47,7 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 		return false
 	
 	cardinal_direction = new_direction
-	direction_changed.emit(new_direction)
+	direction_changed.emit( new_direction )
 	sprite_2d.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
 	return true
@@ -63,13 +63,13 @@ func anim_direction() -> String:
 	else:
 		return "side"
 		
-func _take_damage( damage : int ):
+func _take_damage( hurt_box : HurtBox ):
 	if invulnerable == true :
 		return
 		
-	hp -= damage
+	hp -= hurt_box.damage
 	
 	if hp > 0:
-		enemy_damaged.emit()
+		enemy_damaged.emit( hurt_box )
 	else:
-		enemy_destroy.emit()
+		enemy_destroy.emit( hurt_box )

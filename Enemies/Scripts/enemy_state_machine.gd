@@ -14,7 +14,7 @@ func _process(delta):
 func _physics_process(delta):
 	change_state(current_state.physics(delta))
 
-func initialize(_enemy:Enemy):
+func initialize( _enemy : Enemy ):
 	states = []
 	
 	for c in get_children():
