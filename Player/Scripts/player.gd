@@ -6,8 +6,8 @@ const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 var direction  = Vector2.ZERO
 
 var invulnerable : bool = false
-var hp : int = 6
-var max_hp : int = 6
+@export var hp : int = 6
+@export var max_hp : int = 6
  
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -23,7 +23,7 @@ func _ready():
 	PlayerManager.player = self
 	state_machine.initialize( self )
 	hit_box.damaged.connect( _take_damage )
-	update_hp( max_hp )
+	update_hp( 99 )
 	pass
 
 func _process( _delta ):
@@ -74,11 +74,11 @@ func _take_damage( hurt_box : HurtBox ):
 		player_damaged.emit( hurt_box )
 	else:
 		player_damaged.emit( hurt_box )
-		update_hp( 99 )
 	pass
 	
 func update_hp( delta : int ):
 	hp = clampi( hp + delta, 0, max_hp )
+	PlayerHud.update_hp( hp, max_hp)
 	pass
 	 
 func make_invulnerable( _duration : float = 1.0 ):
