@@ -5,5 +5,5 @@ extends Node2D
 func _ready():
 	$HitBox.damaged.connect(take_damage)
 
-func take_damage(_damage):
+func take_damage( _damage : HurtBox ):
 	queue_free()
