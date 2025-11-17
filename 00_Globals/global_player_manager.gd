@@ -14,7 +14,12 @@ func add_player_instance():
 	player = PLAYER.instantiate()
 	add_child( player )
 	pass
-	
+
+func set_player_health( _hp: int, _max_hp: int ):
+	player.max_hp = _max_hp
+	player.hp = _hp
+	player.update_hp( 0 )
+	 	
 func set_player_position( _new_position : Vector2 ):
 	player.global_position = _new_position
 	pass
