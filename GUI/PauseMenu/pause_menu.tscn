@@ -1,12 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbm18fuplaygr"]
+[gd_scene load_steps=6 format=3 uid="uid://bbm18fuplaygr"]
 
 [ext_resource type="Script" uid="uid://yvgfqc64lp60" path="res://GUI/PauseMenu/pause_menu.gd" id="1_2mjep"]
+[ext_resource type="Texture2D" uid="uid://drqco1llx6btu" path="res://Items/sprites/items.png" id="2_mqpij"]
+[ext_resource type="PackedScene" uid="uid://dhyodb856cgdo" path="res://GUI/PauseMenu/inventory/inventory_slot.tscn" id="3_5jsve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mjep"]
+atlas = ExtResource("2_mqpij")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2mjep"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_2mjep")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_2mjep")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,38 +40,82 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14117648, 0.13333334, 0.13333334, 0.78431374)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ButtonSave" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Save"
-
-[node name="ButtonLoad" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Load"
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0.7882353)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -69.5
-offset_right = 40.5
-offset_bottom = -46.5
+offset_left = -218.0
+offset_top = -123.0
+offset_right = -137.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "[ PAUSED ]"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 72.0
+offset_right = 214.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjep")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = 94.0
+offset_right = -128.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonSave" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="ButtonLoad" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Load"
