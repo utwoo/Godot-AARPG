@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cnuj66g5vdefk"]
+[gd_scene load_steps=44 format=3 uid="uid://cnuj66g5vdefk"]
 
 [ext_resource type="Script" uid="uid://dg222w5ha7asu" path="res://Player/Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://o3e3kn504do0" path="res://Player/Sprites/PlayerSprite02.png" id="2_bw35f"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://lshrnoylapuq" path="res://Player/Scripts/player_camera.gd" id="11_n8jjm"]
 [ext_resource type="Script" uid="uid://b4uls87i1ryju" path="res://Player/Scripts/state_stun.gd" id="11_nhcly"]
 [ext_resource type="PackedScene" uid="uid://cqbkdkfmdrrfu" path="res://GeneralNodes/HitBox/hit_box.tscn" id="12_n8jjm"]
+[ext_resource type="Script" uid="uid://b2h5yl1bx2ck0" path="res://Player/Scripts/player_interactions_host.gd" id="13_2gkp7"]
 [ext_resource type="AudioStream" uid="uid://dens5gnyujqla" path="res://Player/Audio/hit_player.wav" id="13_b4k72"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maef2"]
@@ -533,6 +534,8 @@ _data = {
 &"walk_up": SubResource("Animation_3smsa")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gkp7"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4k72"]
 
 [sub_resource type="Animation" id="Animation_brmje"]
@@ -676,6 +679,19 @@ script = ExtResource("11_n8jjm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 max_polyphony = 4
+
+[node name="Interactions" type="Node2D" parent="."]
+script = ExtResource("13_2gkp7")
+
+[node name="Area2D" type="Area2D" parent="Interactions"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_2gkp7")
+debug_color = Color(0.056705248, 0.70196074, 0, 0.41960785)
 
 [node name="HitBox" parent="." instance=ExtResource("12_n8jjm")]
 collision_layer = 2

@@ -3,6 +3,8 @@ extends Node
 const PLAYER = preload("uid://cnuj66g5vdefk")
 const INVENTORY_DATA : InventoryData = preload("uid://c41040a0souiw")
 
+signal interact_pressed
+
 var player : Player
 var player_spawned : bool = false
   
@@ -33,3 +35,6 @@ func set_as_parent( p : Node2D ):
 
 func _unparent_player( _p : Node2D ):
 	_p.remove_child( player )
+	
+func _interact_pressed():
+	emit_signal("interact_pressed")
