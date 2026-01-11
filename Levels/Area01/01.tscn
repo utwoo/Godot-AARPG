@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dqxl4xm2m55i6"]
+[gd_scene load_steps=12 format=4 uid="uid://dqxl4xm2m55i6"]
 
 [ext_resource type="Script" uid="uid://cddu6i3h81t0s" path="res://Levels/Scripts/level.gd" id="1_22ele"]
 [ext_resource type="PackedScene" uid="uid://liurpj8sy87g" path="res://TileMaps/grass-01.tscn" id="1_vbl6q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://bpfit3tnwae6r" path="res://Items/potion.tres" id="8_th3kk"]
 [ext_resource type="PackedScene" uid="uid://be880rni4jo7s" path="res://Enemies/Slime/Slime.tscn" id="9_b60gt"]
 [ext_resource type="PackedScene" uid="uid://dx6qiy1snmt5a" path="res://Interactables/TreasureChest/treasure-chest.tscn" id="10_f2d14"]
+[ext_resource type="PackedScene" uid="uid://olp0u4hqwfch" path="res://Enemies/Goblin/Goblin.tscn" id="11_an23e"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_22ele")
@@ -47,3 +48,6 @@ quantity = 3
 [node name="TreasureChest2" parent="." instance=ExtResource("10_f2d14")]
 position = Vector2(271, 78)
 quantity = 0
+
+[node name="Goblin" parent="." instance=ExtResource("11_an23e")]
+position = Vector2(75, 65)
