@@ -1,7 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://liurpj8sy87g"]
+[gd_scene load_steps=7 format=3 uid="uid://liurpj8sy87g"]
 
+[ext_resource type="Texture2D" uid="uid://boky33qjqa1ci" path="res://TileMaps/Sprites/dungeon_entrance.png" id="1_hj1tq"]
 [ext_resource type="Texture2D" uid="uid://cdnpfgxw37myl" path="res://TileMaps/Sprites/Grass-01.png" id="1_qpdxt"]
 [ext_resource type="Script" uid="uid://cgkgn5fmxhyan" path="res://TileMaps/level_tilemap.gd" id="2_c54uy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5wdb"]
+texture = ExtResource("1_hj1tq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 5, -16, 9, 1, 4, 16, -16, 16)
+1:2/0 = 0
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -5, -16, -5, -2, -4, 16, 16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qpdxt"]
 texture = ExtResource("1_qpdxt")
@@ -488,6 +510,7 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Path"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_qpdxt")
+sources/0 = SubResource("TileSetAtlasSource_q5wdb")
 
 [node name="Grass01" type="TileMapLayer"]
 z_index = -1

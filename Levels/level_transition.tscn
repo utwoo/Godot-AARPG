@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dovudyb4h4p4p" path="res://Levels/Scripts/level_transition.gd" id="1_cut12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghk5r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cut12"]
 resource_local_to_scene = true
 size = Vector2(32, 64)
 
@@ -12,5 +12,6 @@ monitorable = false
 script = ExtResource("1_cut12")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ghk5r")
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_cut12")
 debug_color = Color(0.6773601, 0, 0.70196074, 0.41960785)

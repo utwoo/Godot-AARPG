@@ -6,6 +6,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
 @export_file( "*.tscn" ) var level
 @export var target_transtion_area : String = "LevelTransition"
+@export var center_player : bool = false
 
 @export_category("Collision Area Settings")
  
@@ -59,12 +60,20 @@ func get_offset() -> Vector2:
 	var player_pos = PlayerManager.player.global_position
 	
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
-		offset.y = player_pos.y - global_position.y
+		if center_player:
+			offset.y = 0
+		else:
+			offset.y = player_pos.y - global_position.y
+		
 		offset.x = 16
 		if side == SIDE.LEFT:
 			offset.x *= -1
 	else:
-		offset.x = player_pos.x - global_position.x
+		if center_player:
+			offset.x = 0
+		else:
+			offset.x = player_pos.x - global_position.x
+		
 		offset.y = 16
 		if side == SIDE.TOP:
 			offset.y *= -1
