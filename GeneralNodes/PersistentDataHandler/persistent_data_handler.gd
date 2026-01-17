@@ -1,6 +1,7 @@
 class_name PersistentDataHandler
 extends Node
 
+signal data_loaded
 var value : bool = false
 
 func _ready():
@@ -13,6 +14,7 @@ func set_value():
 	
 func get_value():
 	value = SaveManager.check_persistent_value( _get_name() )
+	data_loaded.emit()
 	pass
 
 func _get_name() -> String:

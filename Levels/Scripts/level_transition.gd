@@ -26,7 +26,6 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
-
 func _ready():
 	_update_area()
 	if Engine.is_editor_hint():
@@ -60,7 +59,7 @@ func get_offset() -> Vector2:
 	var player_pos = PlayerManager.player.global_position
 	
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
-		if center_player:
+		if center_player == true:
 			offset.y = 0
 		else:
 			offset.y = player_pos.y - global_position.y
