@@ -36,6 +36,10 @@ item_data = ExtResource("7_th3kk")
 position = Vector2(364, 172)
 item_data = ExtResource("8_th3kk")
 
+[node name="ItemPickup3" parent="." instance=ExtResource("6_xhij5")]
+position = Vector2(415, 262)
+item_data = ExtResource("7_th3kk")
+
 [node name="Slime" parent="." instance=ExtResource("9_b60gt")]
 position = Vector2(223, 145)
 
