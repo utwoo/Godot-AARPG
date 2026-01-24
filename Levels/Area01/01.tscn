@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dqxl4xm2m55i6"]
+[gd_scene load_steps=17 format=4 uid="uid://dqxl4xm2m55i6"]
 
 [ext_resource type="Script" uid="uid://cddu6i3h81t0s" path="res://Levels/Scripts/level.gd" id="1_22ele"]
 [ext_resource type="PackedScene" uid="uid://liurpj8sy87g" path="res://TileMaps/grass-01.tscn" id="1_vbl6q"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://d0xtl5nafmkfl" path="res://NPC/npc.tscn" id="12_c2gse"]
 [ext_resource type="Resource" uid="uid://didkq3x0ho8hy" path="res://NPC/00_NPCs/npc_01.tres" id="13_qqqph"]
 [ext_resource type="PackedScene" uid="uid://p723lrsa8j5g" path="res://NPC/npc_behavior_wander.tscn" id="13_uv5ft"]
-[ext_resource type="Resource" uid="uid://dl37sx7ja1crx" path="res://NPC/00_NPCs/npc_02.tres" id="15_ay7cg"]
+[ext_resource type="PackedScene" uid="uid://cirvelp6xk5e6" path="res://NPC/npc_behavior_patrol.tscn" id="15_t4onu"]
+[ext_resource type="PackedScene" uid="uid://ccsminw7qsdb2" path="res://NPC/patrol_location.tscn" id="16_vg1n0"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_22ele")
@@ -66,9 +67,23 @@ npc_resource = ExtResource("13_qqqph")
 
 [node name="NPC2" parent="." instance=ExtResource("12_c2gse")]
 position = Vector2(48, 159)
-npc_resource = ExtResource("15_ay7cg")
 
-[node name="NPCBehaviorWander" parent="NPC2" instance=ExtResource("13_uv5ft")]
-visible = false
-wander_speed = 50.0
-wander_duration = 4.0
+[node name="NPCPatrol" parent="NPC2" instance=ExtResource("15_t4onu")]
+
+[node name="PatrolLocation" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="PatrolLocation2" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(90, 1)
+wait_time = 1.0
+
+[node name="PatrolLocation3" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(87, -98)
+wait_time = 1.0
+
+[node name="PatrolLocation4" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(26, -96)
+wait_time = 1.0
