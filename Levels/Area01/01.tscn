@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dqxl4xm2m55i6"]
+[gd_scene load_steps=16 format=4 uid="uid://dqxl4xm2m55i6"]
 
 [ext_resource type="Script" uid="uid://cddu6i3h81t0s" path="res://Levels/Scripts/level.gd" id="1_22ele"]
 [ext_resource type="PackedScene" uid="uid://liurpj8sy87g" path="res://TileMaps/grass-01.tscn" id="1_vbl6q"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://be880rni4jo7s" path="res://Enemies/Slime/Slime.tscn" id="9_b60gt"]
 [ext_resource type="PackedScene" uid="uid://dx6qiy1snmt5a" path="res://Interactables/TreasureChest/treasure-chest.tscn" id="10_f2d14"]
 [ext_resource type="AudioStream" uid="uid://dpm2517mdalxs" path="res://Levels/Music/example_music_01.ogg" id="11_an23e"]
+[ext_resource type="PackedScene" uid="uid://d0xtl5nafmkfl" path="res://NPC/npc.tscn" id="12_c2gse"]
+[ext_resource type="Resource" uid="uid://didkq3x0ho8hy" path="res://NPC/00_NPCs/npc_01.tres" id="13_qqqph"]
+[ext_resource type="PackedScene" uid="uid://p723lrsa8j5g" path="res://NPC/npc_behavior_wander.tscn" id="13_uv5ft"]
+[ext_resource type="Resource" uid="uid://dl37sx7ja1crx" path="res://NPC/00_NPCs/npc_02.tres" id="15_ay7cg"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_22ele")
@@ -43,7 +47,7 @@ position = Vector2(415, 262)
 item_data = ExtResource("7_th3kk")
 
 [node name="Slime" parent="." instance=ExtResource("9_b60gt")]
-position = Vector2(223, 145)
+position = Vector2(34, 84)
 
 [node name="TreasureChest" parent="." instance=ExtResource("10_f2d14")]
 position = Vector2(428, 79)
@@ -53,3 +57,18 @@ quantity = 3
 [node name="TreasureChest2" parent="." instance=ExtResource("10_f2d14")]
 position = Vector2(271, 78)
 quantity = 0
+
+[node name="NPC" parent="." instance=ExtResource("12_c2gse")]
+position = Vector2(224, 153)
+npc_resource = ExtResource("13_qqqph")
+
+[node name="NPCBehaviorWander" parent="NPC" instance=ExtResource("13_uv5ft")]
+
+[node name="NPC2" parent="." instance=ExtResource("12_c2gse")]
+position = Vector2(48, 159)
+npc_resource = ExtResource("15_ay7cg")
+
+[node name="NPCBehaviorWander" parent="NPC2" instance=ExtResource("13_uv5ft")]
+visible = false
+wander_speed = 50.0
+wander_duration = 4.0
