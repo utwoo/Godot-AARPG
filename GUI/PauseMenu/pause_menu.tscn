@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbm18fuplaygr"]
+[gd_scene load_steps=9 format=3 uid="uid://bbm18fuplaygr"]
 
 [ext_resource type="Script" uid="uid://yvgfqc64lp60" path="res://GUI/PauseMenu/pause_menu.gd" id="1_2mjep"]
+[ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="2_hce4v"]
 [ext_resource type="Texture2D" uid="uid://drqco1llx6btu" path="res://Items/sprites/items.png" id="2_mqpij"]
 [ext_resource type="PackedScene" uid="uid://dhyodb856cgdo" path="res://GUI/PauseMenu/inventory/inventory_slot.tscn" id="3_5jsve"]
 [ext_resource type="Script" uid="uid://dglepan2q42d4" path="res://GUI/PauseMenu/inventory/scripts/inventory_ui.gd" id="3_cqli2"]
@@ -64,7 +65,8 @@ offset_left = 23.0
 offset_top = 133.0
 offset_right = 212.0
 offset_bottom = 202.0
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("2_hce4v")
+text = "Item Description"
 autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhyodb856cgdo"]
+[gd_scene load_steps=5 format=3 uid="uid://dhyodb856cgdo"]
 
 [ext_resource type="Texture2D" uid="uid://drqco1llx6btu" path="res://Items/sprites/items.png" id="1_b3cmb"]
 [ext_resource type="Script" uid="uid://eta4m5naodmv" path="res://GUI/PauseMenu/inventory/scripts/inventory_slot_ui.gd" id="1_oyeco"]
+[ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="3_mvqj8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyeco"]
 atlas = ExtResource("1_b3cmb")
@@ -23,9 +24,11 @@ stretch_mode = 3
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 3.0
-offset_right = 30.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 8
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 31.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_mvqj8")
+theme_override_font_sizes/font_size = 16
 text = "99"
 horizontal_alignment = 2

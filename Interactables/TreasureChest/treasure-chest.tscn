@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx6qiy1snmt5a"]
+[gd_scene load_steps=13 format=3 uid="uid://dx6qiy1snmt5a"]
 
 [ext_resource type="Script" uid="uid://dfv4sfx105pkk" path="res://Interactables/TreasureChest/treasure-chest.gd" id="1_j544f"]
 [ext_resource type="Texture2D" uid="uid://bb14m1svboomt" path="res://Interactables/TreasureChest/treasure-chest.png" id="2_1wiyq"]
+[ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="3_ebwvl"]
 [ext_resource type="PackedScene" uid="uid://687if1id12et" path="res://GeneralNodes/PersistentDataHandler/persistent_data_handler.tscn" id="4_ebwvl"]
 [ext_resource type="AudioStream" uid="uid://7fdr1o1wgr3v" path="res://Interactables/TreasureChest/treasure-open.wav" id="4_gkxf7"]
 
@@ -210,7 +211,7 @@ offset_right = 49.0
 offset_bottom = 12.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("3_ebwvl")
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

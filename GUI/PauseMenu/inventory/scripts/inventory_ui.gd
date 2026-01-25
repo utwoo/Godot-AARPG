@@ -19,6 +19,7 @@ func clear_inventory():
 		c.queue_free()
 
 func update_inventory( i : int = 0):
+	clear_inventory()
 	for s in data.slots:
 		var new_slot = INVENTORY_SLOT.instantiate()
 		add_child( new_slot )
@@ -37,5 +38,4 @@ func item_foucsed():
 	pass
  
 func on_inventory_changed():
-	clear_inventory()
 	update_inventory( focus_index )

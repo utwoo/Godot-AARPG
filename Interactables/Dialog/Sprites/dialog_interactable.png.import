@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doh2c43accsve"
-path="res://.godot/imported/dialog_interactable.png-632c938b5d66698bfe74b216904cb4d7.ctex"
+uid="uid://xvp5d1gl1lwx"
+path="res://.godot/imported/dialog_interactable.png-3935a6ffc1d1f7882f8e31847d86e03d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/DialogSystem/sprites/dialog_interactable.png"
-dest_files=["res://.godot/imported/dialog_interactable.png-632c938b5d66698bfe74b216904cb4d7.ctex"]
+source_file="res://Interactables/Dialog/Sprites/dialog_interactable.png"
+dest_files=["res://.godot/imported/dialog_interactable.png-3935a6ffc1d1f7882f8e31847d86e03d.ctex"]
 
 [params]
 
