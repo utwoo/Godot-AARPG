@@ -13,7 +13,7 @@ var is_paused : bool = false
 func _ready():
 	hide_pause_menu()
 	button_save.pressed.connect(_on_save_pressed)
-	button_load.pressed.connect(_on_load_pressed)	
+	button_load.pressed.connect(_on_load_pressed)
 	pass
 
 func _unhandled_input( event: InputEvent ):
