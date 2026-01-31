@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bbpr4a163b3pm" path="res://Interactables/Dialog/Scripts/dialog_text.gd" id="16_2l6ck"]
 [ext_resource type="PackedScene" uid="uid://ccsminw7qsdb2" path="res://NPC/patrol_location.tscn" id="16_vg1n0"]
 [ext_resource type="Resource" uid="uid://kgmaj2lxqcvk" path="res://NPC/00_NPCs/npc_hero.tres" id="17_rbd2o"]
+[ext_resource type="Resource" uid="uid://dl37sx7ja1crx" path="res://NPC/00_NPCs/npc_02.tres" id="18_suexf"]
 
 [node name="01" type="Node2D" unique_id=148797791]
 script = ExtResource("1_22ele")
@@ -69,7 +70,6 @@ npc_resource = ExtResource("13_qqqph")
 [node name="NPCBehaviorWander" parent="NPC" unique_id=2085500851 instance=ExtResource("13_uv5ft")]
 
 [node name="DialogInteraction" parent="NPC" unique_id=580462823 instance=ExtResource("15_vg1n0")]
-enabled = true
 
 [node name="DialogText" type="Node" parent="NPC/DialogInteraction" unique_id=1019644669]
 script = ExtResource("16_2l6ck")
@@ -93,6 +93,7 @@ metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
 [node name="NPC2" parent="." unique_id=1288066685 instance=ExtResource("12_c2gse")]
 position = Vector2(74, 165)
+npc_resource = ExtResource("18_suexf")
 
 [node name="NPCPatrol" parent="NPC2" unique_id=1916161808 instance=ExtResource("15_t4onu")]
 
@@ -114,3 +115,10 @@ wait_time = 1.0
 modulate = Color(0, 0, 1, 1)
 position = Vector2(-1, -98)
 wait_time = 1.0
+
+[node name="DialogInteraction" parent="NPC2" unique_id=365682414 instance=ExtResource("15_vg1n0")]
+
+[node name="DialogText" type="Node" parent="NPC2/DialogInteraction" unique_id=907650038]
+script = ExtResource("16_2l6ck")
+text = "Hi~ How's Hero?"
+metadata/_custom_type_script = "uid://bbpr4a163b3pm"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3uncbihj24t"]
+[gd_scene format=3 uid="uid://3uncbihj24t"]
 
 [ext_resource type="Script" uid="uid://vtdn3h1t3nrs" path="res://Interactables/Dialog/Scripts/dialog_interaction.gd" id="1_2md52"]
 [ext_resource type="Texture2D" uid="uid://xvp5d1gl1lwx" path="res://Interactables/Dialog/Sprites/dialog_interactable.png" id="1_7jy3t"]
@@ -125,26 +125,23 @@ _data = {
 &"show": SubResource("Animation_efl6r")
 }
 
-[node name="DialogInteraction" type="Area2D"]
+[node name="DialogInteraction" type="Area2D" unique_id=319956211]
 process_mode = 3
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_2md52")
-enabled = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506536729]
 shape = SubResource("RectangleShape2D_cwm4h")
 debug_color = Color(0.32156864, 0.92941177, 0.5058824, 0.22745098)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1869359361]
 position = Vector2(2, -52)
 texture = ExtResource("1_7jy3t")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1941334640]
 process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_2md52")
-}
-autoplay = "default"
+libraries/ = SubResource("AnimationLibrary_2md52")
+autoplay = &"default"
