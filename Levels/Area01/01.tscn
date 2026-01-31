@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dqxl4xm2m55i6"]
+[gd_scene format=4 uid="uid://dqxl4xm2m55i6"]
 
 [ext_resource type="Script" uid="uid://cddu6i3h81t0s" path="res://Levels/Scripts/level.gd" id="1_22ele"]
 [ext_resource type="PackedScene" uid="uid://liurpj8sy87g" path="res://TileMaps/grass-01.tscn" id="1_vbl6q"]
@@ -20,97 +20,97 @@
 [ext_resource type="PackedScene" uid="uid://ccsminw7qsdb2" path="res://NPC/patrol_location.tscn" id="16_vg1n0"]
 [ext_resource type="Resource" uid="uid://kgmaj2lxqcvk" path="res://NPC/00_NPCs/npc_hero.tres" id="17_rbd2o"]
 
-[node name="01" type="Node2D"]
+[node name="01" type="Node2D" unique_id=148797791]
 script = ExtResource("1_22ele")
 music = ExtResource("11_an23e")
 
-[node name="Grass01" parent="." instance=ExtResource("1_vbl6q")]
+[node name="Grass01" parent="." unique_id=2117602614 instance=ExtResource("1_vbl6q")]
 tile_map_data = PackedByteArray("AAD/////AQAOAAUAAAD//wAAAQAOAAYAAAAAAP//AQAKAAYAAAAAAAAAAQAKAAcAAAABAP//AQALAAUAAAABAAAAAQAMAAcAAAD//wEAAQAOAAUAAAD//wIAAQAOAAYAAAAAAAEAAQACAAIAAAAAAAIAAQACAAMAAAABAAEAAQADAAIAAAABAAIAAQADAAMAAAD//wMAAQAOAAUAAAD//wQAAQAOAAYAAAAAAAMAAQACAAIAAAAAAAQAAQACAAMAAAABAAMAAQADAAIAAAABAAQAAQADAAMAAAD//wUAAQAOAAUAAAD//wYAAQAOAAUAAAAAAAUAAQACAAIAAAAAAAYAAQACAAMAAAABAAUAAQADAAIAAAABAAYAAQADAAMAAAD//wgAAQAOAAUAAAAAAAcAAQAKAAQAAAABAAcAAQANAAQAAAABAAgAAQADAAMAAAACAP//AQAMAAUAAAACAAAAAQANAAcAAAADAP//AQANAAUAAAADAAAAAQALAAcAAAAEAP//AQALAAUAAAAEAAAAAQAMAAcAAAACAAEAAQABAAIAAAACAAIAAQABAAMAAAADAAEAAQACAAIAAAADAAIAAQACAAMAAAAEAAEAAQADAAIAAAAEAAIAAQADAAMAAAACAAMAAQABAAIAAAACAAQAAQABAAMAAAADAAMAAQACAAIAAAADAAQAAQAAAAAAAAAEAAMAAQADAAIAAAAEAAQAAQADAAMAAAACAAUAAQABAAIAAAACAAYAAQABAAMAAAADAAUAAQACAAIAAAADAAYAAQACAAMAAAAEAAUAAQADAAIAAAAEAAYAAQADAAMAAAACAAcAAQALAAQAAAACAAgAAQABAAMAAAADAAcAAQAMAAQAAAADAAgAAQACAAMAAAAEAAcAAQANAAQAAAAEAAgAAQADAAMAAAAFAP//AQAMAAUAAAAFAAAAAQANAAcAAAAGAP//AQANAAUAAAAGAAAAAQALAAcAAAAHAP//AQALAAUAAAAHAAAAAQAMAAcAAAAFAAEAAQABAAIAAAAFAAIAAQABAAMAAAAGAAEAAQACAAIAAAAGAAIAAQACAAMAAAAHAAEAAQADAAIAAAAHAAIAAQADAAMAAAAFAAMAAQABAAIAAAAFAAQAAQABAAMAAAAGAAMAAQAAAAAAAAAGAAQAAQACAAMAAAAHAAMAAQADAAIAAAAHAAQAAQADAAMAAAAFAAUAAQABAAIAAAAFAAYAAQABAAMAAAAGAAUAAQACAAIAAAAGAAYAAQACAAMAAAAHAAUAAQADAAIAAAAHAAYAAQADAAMAAAAFAAcAAQALAAQAAAAFAAgAAQABAAMAAAAGAAcAAQAMAAQAAAAGAAgAAQACAAMAAAAHAAcAAQANAAQAAAAHAAgAAQADAAMAAAAIAP//AQAMAAUAAAAIAAAAAQANAAcAAAAJAP//AQANAAUAAAAJAAAAAQALAAcAAAAKAP//AQALAAUAAAAKAAAAAQAMAAcAAAAIAAEAAQABAAIAAAAIAAIAAQABAAMAAAAJAAEAAQACAAIAAAAJAAIAAQACAAMAAAAKAAEAAQADAAIAAAAKAAIAAQADAAMAAAAIAAMAAQABAAIAAAAIAAQAAQABAAMAAAAJAAMAAQACAAIAAAAJAAQAAQACAAMAAAAKAAMAAQADAAIAAAAKAAQAAQADAAMAAAAIAAUAAQABAAIAAAAIAAYAAQABAAMAAAAJAAUAAQACAAIAAAAJAAYAAQACAAMAAAAKAAUAAQADAAIAAAAKAAYAAQADAAMAAAAIAAcAAQALAAQAAAAIAAgAAQABAAMAAAAJAAcAAQAMAAQAAAAJAAgAAQACAAMAAAAKAAcAAQANAAQAAAAKAAgAAQADAAMAAAALAP//AQAMAAUAAAALAAAAAQANAAcAAAAMAP//AQANAAUAAAAMAAAAAQAMAAcAAAANAP//AQACAAIAAAANAAAAAQANAAcAAAALAAEAAQABAAIAAAALAAIAAQABAAMAAAAMAAEAAQACAAIAAAAMAAIAAQACAAMAAAANAAEAAQADAAIAAAALAAMAAQABAAIAAAALAAQAAQABAAMAAAAMAAMAAQACAAIAAAAMAAQAAQACAAMAAAANAAMAAQADAAIAAAANAAQAAQADAAMAAAALAAUAAQABAAIAAAALAAYAAQABAAMAAAAMAAUAAQACAAIAAAAMAAYAAQACAAMAAAANAAUAAQADAAIAAAANAAYAAQADAAMAAAALAAcAAQALAAQAAAALAAgAAQABAAMAAAAMAAcAAQAMAAQAAAAMAAgAAQACAAMAAAANAAcAAQANAAQAAAANAAgAAQADAAMAAAAOAP//AQAOAAYAAAAOAAAAAQAOAAcAAAAPAP//AQAKAAUAAAAPAAAAAQAKAAUAAAAOAAEAAQABAAIAAAAOAAIAAQABAAIAAAAPAAEAAQAKAAYAAAAPAAIAAQAKAAUAAAAOAAMAAQABAAIAAAAOAAQAAQABAAIAAAAPAAMAAQAKAAcAAAAPAAQAAQABAAIAAAAPAAYAAQAKAAQAAAAOAAgAAQAOAAUAAAAPAAcAAQAKAAUAAAAPAAgAAQAKAAUAAAAOAAcAAQAOAAQAAAAOAAUAAQABAAIAAAAOAAYAAQACAAIAAAD//wcAAQAOAAYAAAAAAAgAAQAKAAUAAAAPAAUAAQABAAMAAAANAAIAAQADAAMAAAA=")
 
-[node name="PlayerSpawn" parent="." instance=ExtResource("2_chooo")]
+[node name="PlayerSpawn" parent="." unique_id=793238168 instance=ExtResource("2_chooo")]
 position = Vector2(433, 166)
 
-[node name="LevelTransition" parent="." instance=ExtResource("4_4t7i1")]
+[node name="LevelTransition" parent="." unique_id=1606747522 instance=ExtResource("4_4t7i1")]
 position = Vector2(512, 160)
 level = "uid://dbequpfyc37bc"
 side = 1
 
-[node name="Plant" parent="." instance=ExtResource("5_pwydo")]
+[node name="Plant" parent="." unique_id=1673975202 instance=ExtResource("5_pwydo")]
 position = Vector2(354, 74)
 
-[node name="ItemPickup" parent="." instance=ExtResource("6_xhij5")]
+[node name="ItemPickup" parent="." unique_id=2026577212 instance=ExtResource("6_xhij5")]
 position = Vector2(312, 138)
 item_data = ExtResource("7_th3kk")
 
-[node name="ItemPickup2" parent="." instance=ExtResource("6_xhij5")]
+[node name="ItemPickup2" parent="." unique_id=775650957 instance=ExtResource("6_xhij5")]
 position = Vector2(364, 172)
 item_data = ExtResource("8_th3kk")
 
-[node name="ItemPickup3" parent="." instance=ExtResource("6_xhij5")]
+[node name="ItemPickup3" parent="." unique_id=991493168 instance=ExtResource("6_xhij5")]
 position = Vector2(415, 262)
 item_data = ExtResource("7_th3kk")
 
-[node name="Slime" parent="." instance=ExtResource("9_b60gt")]
+[node name="Slime" parent="." unique_id=919455436 instance=ExtResource("9_b60gt")]
 position = Vector2(34, 84)
 
-[node name="TreasureChest" parent="." instance=ExtResource("10_f2d14")]
+[node name="TreasureChest" parent="." unique_id=380576144 instance=ExtResource("10_f2d14")]
 position = Vector2(428, 79)
 item_data = ExtResource("7_th3kk")
 quantity = 3
 
-[node name="TreasureChest2" parent="." instance=ExtResource("10_f2d14")]
+[node name="TreasureChest2" parent="." unique_id=807482638 instance=ExtResource("10_f2d14")]
 position = Vector2(271, 78)
 quantity = 0
 
-[node name="NPC" parent="." instance=ExtResource("12_c2gse")]
+[node name="NPC" parent="." unique_id=1746412371 instance=ExtResource("12_c2gse")]
 position = Vector2(224, 153)
 npc_resource = ExtResource("13_qqqph")
 
-[node name="NPCBehaviorWander" parent="NPC" instance=ExtResource("13_uv5ft")]
+[node name="NPCBehaviorWander" parent="NPC" unique_id=2085500851 instance=ExtResource("13_uv5ft")]
 
-[node name="DialogInteraction" parent="NPC" instance=ExtResource("15_vg1n0")]
+[node name="DialogInteraction" parent="NPC" unique_id=580462823 instance=ExtResource("15_vg1n0")]
 enabled = true
 
-[node name="DialogText" type="Node" parent="NPC/DialogInteraction"]
+[node name="DialogText" type="Node" parent="NPC/DialogInteraction" unique_id=1019644669]
 script = ExtResource("16_2l6ck")
 text = "
 Hi, [b]Hero[/b] is that you?"
 metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
-[node name="DialogText2" type="Node" parent="NPC/DialogInteraction"]
+[node name="DialogText2" type="Node" parent="NPC/DialogInteraction" unique_id=899273229]
 script = ExtResource("16_2l6ck")
 text = "
 [wave]Heck yeah it's me![/wave]"
 npc_info = ExtResource("17_rbd2o")
 metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
-[node name="DialogText3" type="Node" parent="NPC/DialogInteraction"]
+[node name="DialogText3" type="Node" parent="NPC/DialogInteraction" unique_id=228893890]
 script = ExtResource("16_2l6ck")
 text = "Nice Bro!
 Happy to have a hero!
 "
 metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
-[node name="NPC2" parent="." instance=ExtResource("12_c2gse")]
+[node name="NPC2" parent="." unique_id=1288066685 instance=ExtResource("12_c2gse")]
 position = Vector2(74, 165)
 
-[node name="NPCPatrol" parent="NPC2" instance=ExtResource("15_t4onu")]
+[node name="NPCPatrol" parent="NPC2" unique_id=1916161808 instance=ExtResource("15_t4onu")]
 
-[node name="PatrolLocation" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+[node name="PatrolLocation" parent="NPC2/NPCPatrol" unique_id=1950033527 instance=ExtResource("16_vg1n0")]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0, 1)
 
-[node name="PatrolLocation2" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+[node name="PatrolLocation2" parent="NPC2/NPCPatrol" unique_id=1932311995 instance=ExtResource("16_vg1n0")]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(87, 1)
 wait_time = 1.0
 
-[node name="PatrolLocation3" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+[node name="PatrolLocation3" parent="NPC2/NPCPatrol" unique_id=308499096 instance=ExtResource("16_vg1n0")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(87, -98)
 wait_time = 1.0
 
-[node name="PatrolLocation4" parent="NPC2/NPCPatrol" instance=ExtResource("16_vg1n0")]
+[node name="PatrolLocation4" parent="NPC2/NPCPatrol" unique_id=1440408959 instance=ExtResource("16_vg1n0")]
 modulate = Color(0, 0, 1, 1)
 position = Vector2(-1, -98)
 wait_time = 1.0

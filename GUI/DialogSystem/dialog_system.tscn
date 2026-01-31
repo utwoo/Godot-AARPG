@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://f7h6ee2ame8f"]
+[gd_scene format=3 uid="uid://f7h6ee2ame8f"]
 
 [ext_resource type="Script" uid="uid://dquisndsie4uw" path="res://GUI/DialogSystem/scripts/dialog_system.gd" id="1_yc0v7"]
 [ext_resource type="Texture2D" uid="uid://rm53878r4345" path="res://GUI/DialogSystem/sprites/text-bubble.png" id="2_gjg0o"]
 [ext_resource type="FontFile" uid="uid://bno0fmmwqsv8u" path="res://GUI/DialogSystem/fronts/Abaddon Light.ttf" id="3_p2qco"]
 [ext_resource type="FontFile" uid="uid://0l1epq6rv3eg" path="res://GUI/DialogSystem/fronts/Abaddon Bold.ttf" id="4_ngyf5"]
 [ext_resource type="Texture2D" uid="uid://c6y8grrkqm3ui" path="res://GUI/DialogSystem/sprites/portraits/npc_portrait_01.png" id="5_imjx8"]
+[ext_resource type="AudioStream" uid="uid://vqlg5carjarf" path="res://GUI/DialogSystem/audio/voice_blip.wav" id="6_5rua8"]
 [ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="6_m6bf1"]
+[ext_resource type="Script" uid="uid://bimnqmicx5uxx" path="res://GUI/DialogSystem/scripts/dialog_portrait.gd" id="6_ngl6g"]
 
 [sub_resource type="Gradient" id="Gradient_yc0v7"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -74,12 +76,12 @@ _data = {
 &"default": SubResource("Animation_m6bf1")
 }
 
-[node name="DialogSystem" type="CanvasLayer"]
+[node name="DialogSystem" type="CanvasLayer" unique_id=547466977]
 process_mode = 3
 layer = 0
 script = ExtResource("1_yc0v7")
 
-[node name="DialogUI" type="Control" parent="."]
+[node name="DialogUI" type="Control" parent="." unique_id=2056333926]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +89,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="DialogUI"]
+[node name="TextureRect" type="TextureRect" parent="DialogUI" unique_id=746919284]
 modulate = Color(0, 0, 0, 0.54901963)
 layout_mode = 1
 anchors_preset = 15
@@ -97,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_gjg0o")
 
-[node name="PanelContainer" type="PanelContainer" parent="DialogUI"]
+[node name="PanelContainer" type="PanelContainer" parent="DialogUI" unique_id=1013225106]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -112,7 +114,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_yc0v7")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer" unique_id=745493527]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
 theme_override_fonts/normal_font = ExtResource("3_p2qco")
@@ -123,8 +125,10 @@ text = "Example [b]Text[/b]!!!
 [shake]shaking text[/shake]"
 fit_content = true
 scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="NameLable" type="Label" parent="DialogUI"]
+[node name="NameLable" type="Label" parent="DialogUI" unique_id=1020315859]
 layout_mode = 0
 offset_left = 97.0
 offset_top = 172.0
@@ -136,16 +140,21 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_ngyf5")
 text = "Name"
 
-[node name="PortraitSprite" type="Sprite2D" parent="DialogUI"]
+[node name="PortraitSprite" type="Sprite2D" parent="DialogUI" unique_id=1481346468]
 position = Vector2(51, 199)
 texture = ExtResource("5_imjx8")
 hframes = 4
+script = ExtResource("6_ngl6g")
 
-[node name="Timer" type="Timer" parent="DialogUI"]
+[node name="Timer" type="Timer" parent="DialogUI" unique_id=1060642288]
+one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI" unique_id=415173599]
+stream = ExtResource("6_5rua8")
+max_polyphony = 6
+bus = &"SFX"
 
-[node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI"]
+[node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI" unique_id=162487454]
 self_modulate = Color(0.2268983, 0.4660567, 0.26770014, 1)
 layout_mode = 0
 offset_left = 438.0
@@ -154,15 +163,13 @@ offset_right = 476.0
 offset_bottom = 267.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_imjx8")
 
-[node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator"]
+[node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator" unique_id=454197258]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_m6bf1")
 text = "NEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/DialogProgressIndicator"]
-libraries = {
-&"": SubResource("AnimationLibrary_5rua8")
-}
-autoplay = "default"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/DialogProgressIndicator" unique_id=410864177]
+libraries/ = SubResource("AnimationLibrary_5rua8")
+autoplay = &"default"
