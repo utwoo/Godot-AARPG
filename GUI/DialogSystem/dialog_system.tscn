@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://vqlg5carjarf" path="res://GUI/DialogSystem/audio/voice_blip.wav" id="6_5rua8"]
 [ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="6_m6bf1"]
 [ext_resource type="Script" uid="uid://bimnqmicx5uxx" path="res://GUI/DialogSystem/scripts/dialog_portrait.gd" id="6_ngl6g"]
+[ext_resource type="Theme" uid="uid://drmowq34063pb" path="res://GUI/DialogSystem/dialog_choice_theme.tres" id="9_iofs6"]
 
 [sub_resource type="Gradient" id="Gradient_yc0v7"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -78,7 +79,7 @@ _data = {
 
 [node name="DialogSystem" type="CanvasLayer" unique_id=547466977]
 process_mode = 3
-layer = 0
+layer = 3
 script = ExtResource("1_yc0v7")
 
 [node name="DialogUI" type="Control" parent="." unique_id=2056333926]
@@ -173,3 +174,31 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/DialogProgressIndicator" unique_id=410864177]
 libraries/ = SubResource("AnimationLibrary_5rua8")
 autoplay = &"default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogUI" unique_id=463996648]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.347
+anchor_top = 0.19100001
+anchor_right = 0.347
+anchor_bottom = 0.19100001
+offset_left = -4.0599976
+offset_top = -3.0700035
+offset_right = 248.94
+offset_bottom = 97.92999
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_iofs6")
+alignment = 1
+
+[node name="Button" type="Button" parent="DialogUI/VBoxContainer" unique_id=1203496346]
+layout_mode = 2
+text = "Menu"
+
+[node name="Button2" type="Button" parent="DialogUI/VBoxContainer" unique_id=771134272]
+layout_mode = 2
+text = "Menu"
+
+[node name="Button3" type="Button" parent="DialogUI/VBoxContainer" unique_id=728913102]
+layout_mode = 2
+text = "Menu"

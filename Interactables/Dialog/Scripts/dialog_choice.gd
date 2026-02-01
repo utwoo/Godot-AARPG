@@ -3,4 +3,28 @@
 class_name DialogChoice
 extends DialogItem
 
-@export var choices : Array[ String ] = [ "Yes", "No" ]
+var dialog_branches : Array[ DialogBranch ]
+
+func _ready():
+	if Engine.is_editor_hint():
+		return
+	
+	for c in get_children():
+		if c is DialogBranch:
+			dialog_branches.append( c )
+		
+
+func _get_configuration_warnings() -> PackedStringArray:
+	if _check_for_dialog_items() == false:
+		return [ "Requires at least 2 dialog branch node." ]
+	else:
+		return []
+		
+func _check_for_dialog_items() -> bool:
+	var _count : int = 0
+	for c in get_children():
+		if c is DialogBranch:
+			_count += 1
+			if _count > 1:
+				return true
+	return false
