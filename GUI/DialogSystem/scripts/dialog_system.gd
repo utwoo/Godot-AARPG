@@ -1,3 +1,4 @@
+@tool
 @icon("res://GUI/DialogSystem/icons/star_bubble.svg")
 class_name DialogSystemNode
 extends CanvasLayer
@@ -96,6 +97,7 @@ func start_dialog():
 
 func set_dialog_text( dialogText : DialogText ):
 	content.text = dialogText.text
+	choice_options.visible = false
 	portrait_sprite.texture = dialogText.npc_info.portrait
 	portrait_sprite.audio_pitch_base = dialogText.npc_info.dialog_audio_pitch
 	name_lable.text = dialogText.npc_info.npc_name
@@ -119,6 +121,8 @@ func set_dialog_choice( dialogChoice : DialogChoice ):
 		_new_choice.pressed.connect( _dialog_choice_selected.bind( dialogChoice.dialog_branches [ i ] ) )
 		choice_options.add_child( _new_choice )
 	
+	if Engine.is_editor_hint():
+		return
 	await get_tree().process_frame
 	choice_options.get_child( 0 ).grab_focus()
 	pass
