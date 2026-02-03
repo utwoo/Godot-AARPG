@@ -32,8 +32,8 @@ func save_game():
 	pass
 
 func load_game():
+	var file := get_save_file()
 	
-	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.READ )
 	var json := JSON.new()
 	json.parse( file.get_line() )
 	
@@ -81,3 +81,6 @@ func check_persistent_value( value : String ) -> bool :
 	var p = current_save.persistence as Array
 	var result = p.has( value )
 	return result
+
+func get_save_file() -> FileAccess:
+	return FileAccess.open( SAVE_PATH + "save.sav", FileAccess.READ )
