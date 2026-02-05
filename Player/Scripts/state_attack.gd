@@ -11,6 +11,7 @@ extends State
 
 @onready var walk : State = $"../Walk"
 @onready var idle : State = $"../Idle"
+@onready var charge_attack : State = $"../ChargeAttack"
 
 var attacking : bool = false
 
@@ -54,5 +55,7 @@ func exit() -> void:
 	pass
 	
 func end_attack(_newAnimName:String):
+	if Input.is_action_pressed("attack"):
+		state_machine.change_state( charge_attack )
 	attacking = false
 	pass
