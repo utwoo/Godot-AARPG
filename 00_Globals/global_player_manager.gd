@@ -37,4 +37,4 @@ func _unparent_player( _p : Node2D ):
 	_p.remove_child( player )
 	
 func _interact_pressed():
-	emit_signal("interact_pressed")
+	interact_pressed.emit()
