@@ -15,6 +15,10 @@ var invulnerable : bool = false
 @onready var state_machine = $StateMachine
 @onready var hit_box : HitBox = $HitBox
 @onready var audio = $Audio/AudioStreamPlayer2D
+@onready var lift : State_Lift = $StateMachine/Lift
+@onready var carry : State_Carry = $StateMachine/Carry
+@onready var held_item : Node2D = $Sprite2D/HeldItem
+
 
 signal direction_changed( new_direction : Vector2 )
 signal player_damaged( hurt_box : HurtBox )
@@ -95,4 +99,9 @@ func make_invulnerable( _duration : float = 1.0 ):
 func play_audio( _audio : AudioStream ):
 	self.audio.stream = _audio
 	self.audio.play()
+	pass
+	
+func pickup_item( _throwable : Throwable ):
+	state_machine.change_state( lift )
+	carry.throwable = _throwable
 	pass

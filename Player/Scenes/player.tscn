@@ -22,7 +22,11 @@
 [ext_resource type="AudioStream" uid="uid://bnlaf8n8nblyo" path="res://Player/Audio/spin-attack.wav" id="14_1yy2w"]
 [ext_resource type="Script" uid="uid://b4mrsmv1wmopr" path="res://Player/Scripts/push_area.gd" id="14_dsnr8"]
 [ext_resource type="Script" uid="uid://cgrmcbqc48rc4" path="res://Player/Scripts/Abilities/abilities.gd" id="17_brmje"]
+[ext_resource type="Script" uid="uid://bv1cyvosu5qti" path="res://Player/Scripts/state_lift.gd" id="17_e0sep"]
+[ext_resource type="AudioStream" uid="uid://g542467wkgke" path="res://Player/Audio/huwh.wav" id="18_aytf0"]
 [ext_resource type="PackedScene" uid="uid://df8jcootmn1pu" path="res://GeneralNodes/ItemMagnet/item_magnet.tscn" id="18_ju8fe"]
+[ext_resource type="Script" uid="uid://da7tt7rqtucre" path="res://Player/Scripts/state_carry.gd" id="18_ut808"]
+[ext_resource type="AudioStream" uid="uid://tfign5084bd4" path="res://Player/Audio/throw.wav" id="20_p0l7e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maef2"]
 
@@ -585,7 +589,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_efn1h"]
@@ -1509,6 +1513,7 @@ show_behind_parent = true
 position = Vector2(0, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/HeldItem" unique_id=1808762011]
+visible = false
 position = Vector2(0, -9)
 texture = ExtResource("7_17k2o")
 hframes = 16
@@ -1538,6 +1543,14 @@ script = ExtResource("11_nhcly")
 script = ExtResource("12_miu1y")
 sfx_charged = ExtResource("13_vkrb1")
 sfx_spin = ExtResource("14_1yy2w")
+
+[node name="Lift" type="Node" parent="StateMachine" unique_id=1024466769]
+script = ExtResource("17_e0sep")
+lift_audio = ExtResource("18_aytf0")
+
+[node name="Carry" type="Node" parent="StateMachine" unique_id=1687229989]
+script = ExtResource("18_ut808")
+throw_audio = ExtResource("20_p0l7e")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1685489216]
 visible = false

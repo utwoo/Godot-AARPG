@@ -5,6 +5,7 @@ const INVENTORY_DATA : InventoryData = preload("uid://c41040a0souiw")
 
 signal interact_pressed
 
+var interact_handled : bool = true
 var player : Player
 var player_spawned : bool = false
   
@@ -36,5 +37,6 @@ func set_as_parent( p : Node2D ):
 func _unparent_player( _p : Node2D ):
 	_p.remove_child( player )
 	
-func _interact_pressed():
+func interact():
+	interact_handled = false
 	interact_pressed.emit()
