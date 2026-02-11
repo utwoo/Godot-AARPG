@@ -131,6 +131,7 @@ text = "continue"
 metadata/_edit_use_anchors_ = true
 
 [node name="SplashScene" parent="CanvasLayer" unique_id=702382069 instance=ExtResource("8_hlrge")]
+mouse_filter = 2
 
 [node name="PlayerSpawn" parent="." unique_id=2029011557 instance=ExtResource("5_e557l")]
 position = Vector2(240, 137)

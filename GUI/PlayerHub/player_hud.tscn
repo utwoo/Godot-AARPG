@@ -1,14 +1,255 @@
-[gd_scene load_steps=4 format=3 uid="uid://bng22hlo2xedl"]
+[gd_scene format=3 uid="uid://bng22hlo2xedl"]
 
 [ext_resource type="Texture2D" uid="uid://h7h3dhpgc6wo" path="res://GUI/PlayerHub/gui-health.png" id="1_oarhf"]
 [ext_resource type="Script" uid="uid://dm6aw0afkwwe6" path="res://GUI/PlayerHub/player_hud.gd" id="1_ooues"]
 [ext_resource type="PackedScene" uid="uid://bu1654xbtybkq" path="res://GUI/PlayerHub/heart_gui.tscn" id="2_blip0"]
+[ext_resource type="FontFile" uid="uid://0l1epq6rv3eg" path="res://GUI/DialogSystem/fronts/Abaddon Bold.ttf" id="4_hsp2i"]
 
-[node name="PlayerHud" type="CanvasLayer"]
+[sub_resource type="FontVariation" id="FontVariation_8e35c"]
+base_font = ExtResource("4_hsp2i")
+spacing_glyph = 3
+
+[sub_resource type="Animation" id="Animation_8e35c"]
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(190, 83)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(190, 117)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f0f60"]
+resource_name = "fade_to_black"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(190, 83)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(190, 117)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hsp2i"]
+resource_name = "show_game_over"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, 91), Vector2(190, 83)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, 109), Vector2(190, 117)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8e35c"]
+_data = {
+&"RESET": SubResource("Animation_8e35c"),
+&"fade_to_black": SubResource("Animation_f0f60"),
+&"show_game_over": SubResource("Animation_hsp2i")
+}
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=640700582]
 layer = 2
 script = ExtResource("1_ooues")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=97829512]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,13 +258,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1603985173]
 position = Vector2(401, 8)
 texture = ExtResource("1_oarhf")
 region_enabled = true
 region_rect = Rect2(29, 0, 34, 8)
+metadata/_edit_lock_ = true
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+[node name="HFlowContainer" type="HFlowContainer" parent="Control" unique_id=188420983]
 layout_mode = 0
 offset_left = 337.0
 offset_top = 14.0
@@ -31,63 +273,140 @@ offset_right = 464.0
 offset_bottom = 37.0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 2
+metadata/_edit_lock_ = true
 
-[node name="Heart" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart" parent="Control/HFlowContainer" unique_id=1110429675 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart2" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart2" parent="Control/HFlowContainer" unique_id=1797689331 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart3" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart3" parent="Control/HFlowContainer" unique_id=1078020456 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart4" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart4" parent="Control/HFlowContainer" unique_id=1345939359 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart5" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart5" parent="Control/HFlowContainer" unique_id=1166807744 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart6" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart6" parent="Control/HFlowContainer" unique_id=1035908748 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart7" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart7" parent="Control/HFlowContainer" unique_id=274024262 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart8" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart8" parent="Control/HFlowContainer" unique_id=372488709 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart9" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart9" parent="Control/HFlowContainer" unique_id=1511483670 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart10" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart10" parent="Control/HFlowContainer" unique_id=1863574014 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart11" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart11" parent="Control/HFlowContainer" unique_id=1669347307 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart12" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart12" parent="Control/HFlowContainer" unique_id=1546515242 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart13" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart13" parent="Control/HFlowContainer" unique_id=1519097964 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart14" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart14" parent="Control/HFlowContainer" unique_id=991107592 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart15" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart15" parent="Control/HFlowContainer" unique_id=1168414884 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart16" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart16" parent="Control/HFlowContainer" unique_id=1265100996 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart17" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart17" parent="Control/HFlowContainer" unique_id=1603973423 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart18" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart18" parent="Control/HFlowContainer" unique_id=1720202088 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart19" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart19" parent="Control/HFlowContainer" unique_id=332519556 instance=ExtResource("2_blip0")]
 layout_mode = 2
 
-[node name="Heart20" parent="Control/HFlowContainer" instance=ExtResource("2_blip0")]
+[node name="Heart20" parent="Control/HFlowContainer" unique_id=1284310068 instance=ExtResource("2_blip0")]
 layout_mode = 2
+
+[node name="GameOver" type="Control" parent="Control" unique_id=1458630967]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/GameOver" unique_id=57118064]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Label" type="Label" parent="Control/GameOver" unique_id=1200280539]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -52.0
+offset_right = 50.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_8e35c")
+text = "GAME OVER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GameOver" unique_id=1803958681]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -18.0
+offset_right = 50.0
+offset_bottom = 38.00009
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContinueButton" type="Button" parent="Control/GameOver/VBoxContainer" unique_id=1407772767]
+layout_mode = 2
+text = "continue"
+
+[node name="TitleButton" type="Button" parent="Control/GameOver/VBoxContainer" unique_id=171007956]
+layout_mode = 2
+text = "back to title"
+
+[node name="FadeToBlack" type="ColorRect" parent="Control/GameOver" unique_id=672727747]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 6.0
+offset_right = -1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/GameOver" unique_id=1609439451]
+libraries/ = SubResource("AnimationLibrary_8e35c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=267678025]
+bus = &"SFX"

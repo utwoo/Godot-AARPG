@@ -128,6 +128,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_5ojsh")
 metadata/movie_file = "D:/00_Game Dev/Penumbra/Penumbra/01_MichaelGames/SplashScene/Render/MichaelGamesSplash.avi"
 
@@ -138,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.133333, 0.12549, 0.203922, 1)
 
 [node name="MichaelGamesLogo" type="Control" parent="." unique_id=689968811]
@@ -149,6 +151,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MichaelGamesLogo" unique_id=429167436]
 texture = ExtResource("1_onu1a")
@@ -173,4 +176,5 @@ offset_top = -211.0
 offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_sycvw")

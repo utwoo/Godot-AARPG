@@ -39,6 +39,9 @@ func exit() -> void:
 
 # What happen during the _process update in this state
 func process( _delta : float ) -> EnemyState:
+	if PlayerManager.player.hp <= 0:
+		return next_state
+	
 	var new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
 	_direction = lerp( _direction, new_direction, turn_rate )
 	enemy.velocity = _direction * chase_speed

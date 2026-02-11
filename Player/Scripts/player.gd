@@ -39,6 +39,12 @@ func _physics_process( _delta ):
 	move_and_slide()
 	pass
 
+func _unhandled_input( event : InputEvent ):
+	if event.is_action_pressed("test"):
+		update_hp(-99)
+		player_damaged.emit( %AttackHurtBox )
+	pass
+
 func set_direction() -> bool:
 		
 	if direction == Vector2.ZERO:
@@ -74,10 +80,8 @@ func _take_damage( hurt_box : HurtBox ):
 	if invulnerable == true:
 		return
 	
-	update_hp( -hurt_box.damage )
 	if hp > 0:
-		player_damaged.emit( hurt_box )
-	else:
+		update_hp( -hurt_box.damage )
 		player_damaged.emit( hurt_box )
 	pass
 	
@@ -96,12 +100,19 @@ func make_invulnerable( _duration : float = 1.0 ):
 	hit_box.monitoring = true
 	pass
 
+
 func play_audio( _audio : AudioStream ):
 	self.audio.stream = _audio
 	self.audio.play()
 	pass
 	
+	
 func pickup_item( _throwable : Throwable ):
 	state_machine.change_state( lift )
 	carry.throwable = _throwable
 	pass
+
+
+func revive_player():
+	update_hp(3)
+	state_machine.change_state( $StateMachine/Idle )
