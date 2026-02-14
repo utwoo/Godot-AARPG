@@ -3,6 +3,7 @@ extends Node
 const PLAYER = preload("uid://cnuj66g5vdefk")
 const INVENTORY_DATA : InventoryData = preload("uid://c41040a0souiw")
 
+signal camera_shook( trauma : float )
 signal interact_pressed
 
 var interact_handled : bool = true
@@ -40,3 +41,6 @@ func _unparent_player( _p : Node2D ):
 func interact():
 	interact_handled = false
 	interact_pressed.emit()
+	
+func shake_camera( trauma : float = 1 ):
+	camera_shook.emit( trauma )

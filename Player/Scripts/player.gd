@@ -41,10 +41,9 @@ func _physics_process( _delta ):
 
 func _unhandled_input( event : InputEvent ):
 	if event.is_action_pressed("test"):
-		update_hp(-99)
-		player_damaged.emit( %AttackHurtBox )
+		pass
 	pass
-
+	
 func set_direction() -> bool:
 		
 	if direction == Vector2.ZERO:
