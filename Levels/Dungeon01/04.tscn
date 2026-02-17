@@ -944,7 +944,6 @@ blend_mode = 2
 [node name="DarkWizardBoss" type="Node2D" parent="." unique_id=98696413]
 y_sort_enabled = true
 script = ExtResource("6_sp03e")
-max_hp = 1
 
 [node name="BossNode" type="Node2D" parent="DarkWizardBoss" unique_id=147719202]
 position = Vector2(256, 198)
