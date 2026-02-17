@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://olp0u4hqwfch"]
+[gd_scene format=3 uid="uid://olp0u4hqwfch"]
 
 [ext_resource type="Script" uid="uid://ctuym8etue6c" path="res://Enemies/Scripts/enemy.gd" id="1_3sugd"]
 [ext_resource type="PackedScene" uid="uid://dq06virodhfm8" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_nbun1"]
@@ -731,104 +731,100 @@ _data = {
 &"destroy": SubResource("Animation_j1ull")
 }
 
-[node name="Goblin" type="CharacterBody2D"]
+[node name="Goblin" type="CharacterBody2D" unique_id=415344464]
 collision_layer = 256
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_3sugd")
 
-[node name="HurtBox" parent="." instance=ExtResource("2_nbun1")]
+[node name="HurtBox" parent="." unique_id=945759730 instance=ExtResource("2_nbun1")]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=338155046]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.47632897, 1, 0, 0.41960785)
 
-[node name="HitBox" parent="." instance=ExtResource("3_isni5")]
+[node name="HitBox" parent="." unique_id=1501172158 instance=ExtResource("3_isni5")]
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=958373427]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+[node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=538188602]
 modulate = Color(0, 0, 0, 0.5882353)
 position = Vector2(0, 1)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_fm2kb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=59569662]
 position = Vector2(0, -14)
 texture = ExtResource("5_u158u")
 hframes = 8
 vframes = 3
 
-[node name="AttackHurtBox" parent="Sprite2D" instance=ExtResource("2_nbun1")]
+[node name="AttackHurtBox" parent="Sprite2D" unique_id=1487936049 instance=ExtResource("2_nbun1")]
 position = Vector2(0, 11)
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 damage = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox" unique_id=1005012211]
 shape = SubResource("CircleShape2D_dkpye")
 debug_color = Color(0.47632897, 1, 0, 0.41960785)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=770730245]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_0ae7n")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mjfjn")
-}
-autoplay = "idle_down"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=869457837]
+libraries/ = SubResource("AnimationLibrary_mjfjn")
+autoplay = &"idle_down"
 
-[node name="EnemyStateMachine" type="Node" parent="."]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1932631283]
 script = ExtResource("8_po4td")
 
-[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
+[node name="Idle" type="Node" parent="EnemyStateMachine" unique_id=1123460272 node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("9_2yl5u")
 after_idle_state = NodePath("../Wander")
 
-[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+[node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=1552778132 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_coa1f")
 next_state = NodePath("../Idle")
 
-[node name="Stun" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+[node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=409216558 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_0dj6q")
 next_state = NodePath("../Chase")
 
-[node name="Destroy" type="Node" parent="EnemyStateMachine"]
+[node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=1949160839]
 script = ExtResource("12_3f3wa")
 drops = Array[ExtResource("13_yfeuu")]([SubResource("Resource_ts4pi"), SubResource("Resource_2vvwu")])
 
-[node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
+[node name="Chase" type="Node" parent="EnemyStateMachine" unique_id=1209330732 node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
 script = ExtResource("16_mvdyt")
 vision_area = NodePath("../../VisionArea")
 attack_area = NodePath("../../Sprite2D/AttackHurtBox")
 next_state = NodePath("../Idle")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1380235684]
 max_polyphony = 4
 
-[node name="DestroyEffectSprite" type="Sprite2D" parent="."]
+[node name="DestroyEffectSprite" type="Sprite2D" parent="." unique_id=622555408]
 visible = false
 position = Vector2(0, -9)
 texture = ExtResource("16_8jyw4")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite"]
-libraries = {
-&"": SubResource("AnimationLibrary_62dmb")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite" unique_id=490625934]
+libraries/ = SubResource("AnimationLibrary_62dmb")
 
-[node name="VisionArea" parent="." instance=ExtResource("17_q12kk")]
+[node name="VisionArea" parent="." unique_id=228085996 instance=ExtResource("17_q12kk")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea" unique_id=1306626325]
 position = Vector2(0, -8)
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)

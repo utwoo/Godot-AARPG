@@ -35,7 +35,7 @@ position = Vector2(352, 118)
 position = Vector2(173, 113)
 
 [node name="Pot2" parent="." unique_id=1098784754 instance=ExtResource("7_icgqb")]
-position = Vector2(173, 129)
+position = Vector2(173, 126)
 
 [node name="Pot3" parent="." unique_id=1610206751 instance=ExtResource("7_icgqb")]
 position = Vector2(195, 113)
