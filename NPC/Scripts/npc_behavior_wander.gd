@@ -24,12 +24,6 @@ func _physics_process( _delta : float ):
 	if Engine.is_editor_hint():
 		return
 	
-	if abs( global_position.distance_to( original_postion ) ) > wander_range * 32:
-		npc.velocity *= -1
-		npc.direction *= -1
-		npc.update_direction( global_position + npc.direction )
-		npc.update_animation()
-
 func start():
 	# IDLE PHASE
 	if npc.do_behavior == false:
@@ -47,6 +41,12 @@ func start():
 		
 	npc.state = "walk"
 	npc.direction = DIRECTIONS[ randi_range( 0, 3 ) ]
+	if abs( global_position.distance_to( original_postion ) ) > wander_range * 32:
+		var dir_to_area : Vector2 = global_position.direction_to( original_postion )
+		var best_direction : Array[ float ]
+		for d in DIRECTIONS:
+			best_direction.append( d.dot( dir_to_area ) )
+		npc.direction = DIRECTIONS[ best_direction.find( best_direction.max() ) ]
 	npc.velocity = wander_speed * npc.direction
 	npc.update_direction( global_position + npc.direction )
 	npc.update_animation()
