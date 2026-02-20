@@ -5,7 +5,7 @@ signal quest_updated( quest : Dictionary )
 const QUEST_DATA_LOCATION : String = "res://Quests/"
 
 var quests : Array[ Quest ]
-var current_quests : Array # { title = "not found", is_complete = false, complete_steps = [''] }
+var current_quests : Array = [] # { title = "not found", is_complete = false, completed_steps = [''] }
 
 
 func _ready():
@@ -15,8 +15,15 @@ func _ready():
 	
 
 func _unhandled_input( event : InputEvent ):
-	if event.is_action("test"):
-		print("quest test")
+	if event.is_action( "test" ):
+		update_quest( "short quest" , "", false )
+		update_quest( "long quest" )
+		update_quest( "long quest", "step 1")
+		update_quest( "long quest", "step 2")
+		update_quest( "Recover Lost Magical Flute" )
+		update_quest( "Recover Lost Magical Flute", "Find the Magical Flute" )
+		update_quest( "Recover Lost Magical Flute", "Return the Magical Flute to Nero" )
+		update_quest( "Recover Lost Magical Flute", "", true )
 	pass
 	
 
@@ -28,7 +35,6 @@ func gather_quest_data():
 	for q in quest_files:
 		quests.append( load( QUEST_DATA_LOCATION + "/" + q ) as Quest )
 		pass
-	
 	pass
 	
 # Update the status of a quest
@@ -36,20 +42,20 @@ func update_quest( _title : String, _completed_step : String = "", _is_complete 
 	var _quest_index : int = get_quest_index_by_title( _title )
 	if _quest_index == -1:
 		var new_quest : Dictionary = { 
-			title = "not found", 
+			title = _title, 
 			is_complete = _is_complete, 
-			complete_steps = [] 
+			completed_steps = [] 
 		}
 		
 		if _completed_step != "":
-			new_quest.complete_steps.append( _completed_step )
+			new_quest.completed_steps.append( _completed_step.to_lower() )
 			
 		current_quests.append( new_quest )
 		quest_updated.emit( new_quest )
 	else:
 		var q = current_quests[ _quest_index ]
 		if _completed_step != "" and q.completed_steps.has( _completed_step ) == false:
-			q.completed_steps.append( _completed_step )
+			q.completed_steps.append( _completed_step.to_lower() )
 		q.is_complete = _is_complete
 		quest_updated.emit( q )
 		
@@ -69,7 +75,7 @@ func find_quest( _quest : Quest ) -> Dictionary:
 	for q in current_quests:
 		if q.title.to_lower() ==_quest.title.to_lower():
 			return q
-	return { title = "not found", is_complete = false, complete_steps = [''] }
+	return { title = "not found", is_complete = false, completed_steps = [] }
 	
 # Take title and find associated quest resource
 func find_quest_by_title( _title : String ) -> Quest:
@@ -87,4 +93,23 @@ func get_quest_index_by_title( _title : String ) -> int:
 	
 	
 func sort_quests():
+	var active_quests : Array = []
+	var completed_quests : Array = []
+	
+	for q in current_quests:
+		if q.is_complete:
+			completed_quests.append( q )
+		else:
+			active_quests.append( q )
+			
+	active_quests.sort_custom( sort_quests_ascending )
+	completed_quests.sort_custom( sort_quests_ascending )
+	
+	current_quests = active_quests
+	current_quests.append_array( completed_quests )
+	
 	pass
+	
+
+func sort_quests_ascending( a, b ):
+	return a.title < b.title

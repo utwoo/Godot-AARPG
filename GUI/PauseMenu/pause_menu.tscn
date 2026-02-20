@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbm18fuplaygr"]
+[gd_scene format=3 uid="uid://bbm18fuplaygr"]
 
 [ext_resource type="Script" uid="uid://yvgfqc64lp60" path="res://GUI/PauseMenu/pause_menu.gd" id="1_2mjep"]
 [ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="2_hce4v"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dhyodb856cgdo" path="res://GUI/PauseMenu/inventory/inventory_slot.tscn" id="3_5jsve"]
 [ext_resource type="Script" uid="uid://dglepan2q42d4" path="res://GUI/PauseMenu/inventory/scripts/inventory_ui.gd" id="3_cqli2"]
 [ext_resource type="Resource" uid="uid://c41040a0souiw" path="res://GUI/PauseMenu/inventory/player_inventory.tres" id="4_wvt6b"]
+[ext_resource type="PackedScene" uid="uid://c7fx73gnjl815" path="res://GUI/Quests/quest_item.tscn" id="7_gsdci"]
+[ext_resource type="Script" uid="uid://dpdieca5ssal5" path="res://GUI/PauseMenu/quest_ui.gd" id="7_pl6ye"]
+[ext_resource type="FontFile" uid="uid://0l1epq6rv3eg" path="res://GUI/DialogSystem/fronts/Abaddon Bold.ttf" id="9_edsw5"]
+[ext_resource type="PackedScene" uid="uid://pbbk74qfm514" path="res://GUI/Quests/quest_step_item.tscn" id="10_uce2e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mjep"]
 atlas = ExtResource("2_mqpij")
@@ -22,11 +26,11 @@ texture_margin_top = 14.0
 texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" unique_id=412305619]
 process_mode = 3
 script = ExtResource("1_2mjep")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=548263703]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=904944118]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14117648, 0.13333334, 0.13333334, 0.78431374)
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=1338153348]
 modulate = Color(1, 1, 1, 0.7882353)
 layout_mode = 1
 anchors_preset = 8
@@ -51,89 +55,182 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -123.0
-offset_right = -137.0
-offset_bottom = -100.0
+offset_left = -232.0
+offset_top = -119.0
+offset_right = -151.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "[ PAUSED ]"
 
-[node name="ItemDescription" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 133.0
-offset_right = 212.0
-offset_bottom = 202.0
-theme_override_fonts/font = ExtResource("2_hce4v")
-text = "Item Description"
-autowrap_mode = 2
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control" unique_id=4739089]
+max_polyphony = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="TabContainer" type="TabContainer" parent="Control" unique_id=89581744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 1
+
+[node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=880448058]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Inventory" unique_id=972453373]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 41.0
-offset_right = 216.0
-offset_bottom = 129.0
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 215.0
+offset_bottom = 102.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2mjep")
 
-[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/Inventory/PanelContainer" unique_id=1517448741]
 layout_mode = 2
 columns = 5
 script = ExtResource("3_cqli2")
 data = ExtResource("4_wvt6b")
 
-[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=262819192 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot2" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=708331187 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot3" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=879207370 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot4" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=1890631534 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot5" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=1794949582 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot6" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=1417463183 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot7" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=332341512 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot8" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot8" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=1444755805 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot9" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot9" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=862724519 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="InventorySlot10" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_5jsve")]
+[node name="InventorySlot10" parent="Control/TabContainer/Inventory/PanelContainer/GridContainer" unique_id=253946673 instance=ExtResource("3_5jsve")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="ItemDescription" type="Label" parent="Control/TabContainer/Inventory" unique_id=1943660744]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 108.0
+offset_right = 212.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("2_hce4v")
+text = "Item Description"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Quest" type="Control" parent="Control/TabContainer" unique_id=1178237445]
+layout_mode = 2
+script = ExtResource("7_pl6ye")
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quest" unique_id=1796657454]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 228.0
+offset_bottom = 208.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/TabContainer/Quest/ScrollContainer" unique_id=1676731272]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest/ScrollContainer/MarginContainer" unique_id=1373442681]
+layout_mode = 2
+
+[node name="QuestItem" parent="Control/TabContainer/Quest/ScrollContainer/MarginContainer/VBoxContainer" unique_id=472615850 instance=ExtResource("7_gsdci")]
+layout_mode = 2
+
+[node name="QuestItem2" parent="Control/TabContainer/Quest/ScrollContainer/MarginContainer/VBoxContainer" unique_id=280075976 instance=ExtResource("7_gsdci")]
+layout_mode = 2
+
+[node name="QuestItem3" parent="Control/TabContainer/Quest/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1040790186 instance=ExtResource("7_gsdci")]
+layout_mode = 2
+
+[node name="QuestItem4" parent="Control/TabContainer/Quest/ScrollContainer/MarginContainer/VBoxContainer" unique_id=394463630 instance=ExtResource("7_gsdci")]
+layout_mode = 2
+
+[node name="QuestItem5" parent="Control/TabContainer/Quest/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2121868273 instance=ExtResource("7_gsdci")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quest" unique_id=1674720780]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 14.0
+offset_right = 472.0
+offset_bottom = 51.0
+
+[node name="TitleLabel" type="Label" parent="Control/TabContainer/Quest/VBoxContainer" unique_id=1050846243]
+custom_minimum_size = Vector2(215, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_edsw5")
+text = "Quest Title"
+autowrap_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="Control/TabContainer/Quest/VBoxContainer" unique_id=1051782835]
+modulate = Color(0.61837727, 0.61837727, 0.61837727, 1)
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hce4v")
+text = "Quest description"
+autowrap_mode = 2
+
+[node name="SpaceControl" type="Control" parent="Control/TabContainer/Quest/VBoxContainer" unique_id=619703670]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="QuestStepItem" parent="Control/TabContainer/Quest/VBoxContainer" unique_id=660075035 instance=ExtResource("10_uce2e")]
+layout_mode = 2
+
+[node name="System" type="Control" parent="Control/TabContainer" unique_id=1773703621]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/TabContainer/System" unique_id=228513081]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = 94.0
-offset_right = -128.0
-offset_bottom = 125.0
+offset_left = -48.5
+offset_top = -73.0
+offset_right = 48.5
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonSave" type="Button" parent="Control/HBoxContainer"]
+[node name="ButtonSave" type="Button" parent="Control/TabContainer/System/HBoxContainer" unique_id=1474030012]
 layout_mode = 2
 text = "Save"
 
-[node name="ButtonLoad" type="Button" parent="Control/HBoxContainer"]
+[node name="ButtonLoad" type="Button" parent="Control/TabContainer/System/HBoxContainer" unique_id=2123264262]
 layout_mode = 2
 text = "Load"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-max_polyphony = 4
+[node name="ButtonQuit" type="Button" parent="Control/TabContainer/System/HBoxContainer" unique_id=1251487491]
+layout_mode = 2
+text = "Quit"
