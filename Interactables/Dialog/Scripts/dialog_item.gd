@@ -10,7 +10,7 @@ var example_dialog : DialogSystemNode
 
 func _ready():
 	if Engine.is_editor_hint():
-		editor_selection = Engine.get_singleton( "EditorInterface" )
+		editor_selection = Engine.get_singleton( "EditorInterface" ).get_selection()
 		editor_selection.selection_changed.connect( _on_selecton_changed )
 		return
 	

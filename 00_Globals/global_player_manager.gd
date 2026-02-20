@@ -9,6 +9,8 @@ signal interact_pressed
 var interact_handled : bool = true
 var player : Player
 var player_spawned : bool = false
+
+var xp : int = 0
   
 func _ready():
 	add_player_instance()
@@ -24,7 +26,14 @@ func set_player_health( _hp: int, _max_hp: int ):
 	player.max_hp = _max_hp
 	player.hp = _hp
 	player.update_hp( 0 )
-	 	
+	pass
+	
+	
+func reward_xp( _xp : int ):
+	xp += xp
+	pass
+
+
 func set_player_position( _new_position : Vector2 ):
 	player.global_position = _new_position
 	pass

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://hkk15b8bcbja"]
+
+[ext_resource type="Script" uid="uid://cvpydpcq5mpw6" path="res://Quests/scripts/quest_reward_item.gd" id="1_hp8qs"]
+[ext_resource type="Script" uid="uid://b03y6x6v3l416" path="res://Quests/scripts/quest_resource.gd" id="2_mgcha"]
+
+[resource]
+script = ExtResource("2_mgcha")
+title = "Short Quest"
+description = "An example short quest, with only one step required to complete it."
+steps = Array[String](["Complete Quest"])
+reward_xp = 10
+metadata/_custom_type_script = "uid://b03y6x6v3l416"

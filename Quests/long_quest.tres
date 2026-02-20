@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://fp6nlphlp463"]
+
+[ext_resource type="Script" uid="uid://cvpydpcq5mpw6" path="res://Quests/scripts/quest_reward_item.gd" id="1_scnn1"]
+[ext_resource type="Resource" uid="uid://bpfit3tnwae6r" path="res://Items/potion.tres" id="2_biw6g"]
+[ext_resource type="Script" uid="uid://b03y6x6v3l416" path="res://Quests/scripts/quest_resource.gd" id="2_m6dut"]
+
+[sub_resource type="Resource" id="Resource_p55sk"]
+script = ExtResource("1_scnn1")
+item = ExtResource("2_biw6g")
+quantity = 3
+metadata/_custom_type_script = "uid://cvpydpcq5mpw6"
+
+[resource]
+script = ExtResource("2_m6dut")
+title = "Long Quest"
+description = "A long quest with multiple steps!"
+steps = Array[String](["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"])
+reward_xp = 50
+reward_items = Array[ExtResource("1_scnn1")]([SubResource("Resource_p55sk")])
+metadata/_custom_type_script = "uid://b03y6x6v3l416"
