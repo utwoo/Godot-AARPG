@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://bppuueavjs188" path="res://Interactables/Dialog/Scripts/dialog_choice.gd" id="21_ao3f7"]
 [ext_resource type="Script" uid="uid://dxq1ime3bskty" path="res://Interactables/Dialog/Scripts/dialog_branch.gd" id="22_t1cxi"]
 [ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="23_8k3ch"]
+[ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="23_mpmqi"]
+[ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="25_mpmqi"]
 
 [node name="01" type="Node2D" unique_id=148797791]
 script = ExtResource("1_22ele")
@@ -140,6 +142,13 @@ text = "Count on it!"
 npc_info = ExtResource("18_suexf")
 metadata/_custom_type_script = "uid://dxq1ime3bskty"
 
+[node name="QuestAdvanceTrigger" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch" unique_id=1016245066 instance=ExtResource("23_mpmqi")]
+linked_quest = ExtResource("25_mpmqi")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Magical Flute
+Step: 0 - N/A
+Complete: false"
+
 [node name="DialogText" type="Node" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch" unique_id=562601580]
 script = ExtResource("16_2l6ck")
 text = "Thank you dear here! You are true specimen!"
@@ -166,3 +175,5 @@ metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
 [node name="Pot" parent="." unique_id=575496767 instance=ExtResource("23_8k3ch")]
 position = Vector2(377, 157)
+
+[connection signal="selected" from="NPC2/DialogInteraction/DialogChoice/DialogBranch" to="NPC2/DialogInteraction/DialogChoice/DialogBranch/QuestAdvanceTrigger" method="advance_quest"]

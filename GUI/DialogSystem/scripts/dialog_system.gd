@@ -130,6 +130,7 @@ func set_dialog_choice( dialogChoice : DialogChoice ):
 
 func _dialog_choice_selected( dialogBranch : DialogBranch ):
 	choice_options.visible = false
+	dialogBranch.selected.emit()
 	show_dialog( dialogBranch.dialog_items )
 	pass
 
