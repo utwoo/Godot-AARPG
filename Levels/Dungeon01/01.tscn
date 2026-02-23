@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c7iyysf1aw08n" path="res://Interactables/Dungeon/pressure_plate.tscn" id="5_swvnj"]
 [ext_resource type="PackedScene" uid="uid://cljtwr46w2b1s" path="res://Interactables/Dungeon/barred_door.tscn" id="6_m3xjo"]
 [ext_resource type="PackedScene" uid="uid://brhbgwt86uycq" path="res://Interactables/Dungeon/pushable_statue.tscn" id="7_4dhgi"]
+[ext_resource type="PackedScene" uid="uid://dnete4104lbhm" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="9_54q72"]
+[ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="9_sha80"]
+[ext_resource type="Resource" uid="uid://fp6nlphlp463" path="res://Quests/long_quest.tres" id="10_gmq4b"]
 
 [node name="01" type="Node2D" unique_id=1395703589]
 script = ExtResource("1_1jxiy")
@@ -41,4 +44,49 @@ position = Vector2(224, 88)
 [node name="PushableStatue" parent="." unique_id=1258614935 instance=ExtResource("7_4dhgi")]
 position = Vector2(240, 150)
 
+[node name="PressurePlate2" parent="." unique_id=765499180 instance=ExtResource("5_swvnj")]
+position = Vector2(299, 138)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate2" unique_id=1016245066 instance=ExtResource("9_sha80")]
+position = Vector2(1, -3)
+linked_quest = ExtResource("10_gmq4b")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 0 - N/A
+Complete: false"
+
+[node name="QuestActivatedSwitch" parent="." unique_id=1534198243 instance=ExtResource("9_54q72")]
+position = Vector2(363, 137)
+react_to_global_signal = true
+linked_quest = ExtResource("10_gmq4b")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has quest"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch" unique_id=1737130236 instance=ExtResource("5_swvnj")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate" unique_id=57410767 instance=ExtResource("9_sha80")]
+linked_quest = ExtResource("10_gmq4b")
+quest_step = 1
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 1 - step 1
+Complete: true"
+
+[node name="QuestActivatedSwitch2" parent="." unique_id=1729086828 instance=ExtResource("9_54q72")]
+position = Vector2(195, 184)
+check_type = 3
+react_to_global_signal = true
+linked_quest = ExtResource("10_gmq4b")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if quest has completed"
+
+[node name="PressurePlate" parent="QuestActivatedSwitch2" unique_id=506675581 instance=ExtResource("5_swvnj")]
+
+[connection signal="activated" from="PressurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PressurePlate" to="BarredDoor" method="close_door"]
+[connection signal="activated" from="PressurePlate2" to="PressurePlate2/QuestAdvanceTrigger" method="advance_quest"]
+[connection signal="activated" from="QuestActivatedSwitch/PressurePlate" to="QuestActivatedSwitch/PressurePlate/QuestAdvanceTrigger" method="advance_quest"]

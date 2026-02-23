@@ -143,6 +143,7 @@ npc_info = ExtResource("18_suexf")
 metadata/_custom_type_script = "uid://dxq1ime3bskty"
 
 [node name="QuestAdvanceTrigger" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch" unique_id=1016245066 instance=ExtResource("23_mpmqi")]
+position = Vector2(75, 138)
 linked_quest = ExtResource("25_mpmqi")
 settings_summary = "UPDATE QUEST:
 Quest: Recover Lost Magical Flute
