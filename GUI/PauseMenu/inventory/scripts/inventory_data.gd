@@ -26,6 +26,7 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 	print("Inventory was full!")
 	return false
 
+
 func connect_slots():
 	for s in slots:
 		if s:

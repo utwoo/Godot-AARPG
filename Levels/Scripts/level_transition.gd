@@ -4,6 +4,8 @@ extends Area2D
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
+signal entered_from_here
+
 @export_file( "*.tscn" ) var level
 @export var target_transtion_area : String = "LevelTransition"
 @export var center_player : bool = false
@@ -51,6 +53,7 @@ func _place_player():
 		return
 	
 	PlayerManager.set_player_position( global_position + LevelManager.position_offset )
+	entered_from_here.emit()
 	pass
 	
 func get_offset() -> Vector2:

@@ -83,6 +83,12 @@ func add_persistent_value( value : String ):
 	if check_persistent_value( value ) == false:
 		current_save.persistence.append( value )
 	pass
+	
+
+func remove_persistent_value( value : String ):
+	var p = current_save.persistence as Array
+	p.erase( value )
+	pass
 
 func check_persistent_value( value : String ) -> bool :
 	var p = current_save.persistence as Array

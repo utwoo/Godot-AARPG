@@ -14,6 +14,10 @@
 [ext_resource type="Script" uid="uid://bd0xnrtr0apji" path="res://GeneralNodes/HitBox/hit_box.gd" id="8_2ny6b"]
 [ext_resource type="AudioStream" uid="uid://c3ujvpnwwkco5" path="res://Levels/Dungeon01/dark_wizard/audio/boss_destroy.wav" id="10_3vx3a"]
 [ext_resource type="PackedScene" uid="uid://687if1id12et" path="res://GeneralNodes/PersistentDataHandler/persistent_data_handler.tscn" id="11_0sbod"]
+[ext_resource type="PackedScene" uid="uid://bkc47qu4girfd" path="res://GeneralNodes/ItemDropper/item_dropper.tscn" id="15_lpmky"]
+[ext_resource type="Resource" uid="uid://bot1urt4nka1v" path="res://Items/magical_flute.tres" id="16_qi64o"]
+[ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="17_867rx"]
+[ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="18_4wfmf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmky"]
 texture = ExtResource("3_57pam")
@@ -944,6 +948,7 @@ blend_mode = 2
 [node name="DarkWizardBoss" type="Node2D" parent="." unique_id=98696413]
 y_sort_enabled = true
 script = ExtResource("6_sp03e")
+max_hp = 1
 
 [node name="BossNode" type="Node2D" parent="DarkWizardBoss" unique_id=147719202]
 position = Vector2(256, 198)
@@ -1082,3 +1087,18 @@ texture = SubResource("GradientTexture2D_q0e7s")
 [node name="Sprite2D4" type="Sprite2D" parent="DarkWizardBoss/PositionTargets" unique_id=935776498]
 position = Vector2(116, 191)
 texture = SubResource("GradientTexture2D_q0e7s")
+
+[node name="ItemDropper" parent="DarkWizardBoss" unique_id=1262391849 instance=ExtResource("15_lpmky")]
+position = Vector2(260, 180)
+item_data = ExtResource("16_qi64o")
+
+[node name="QuestAdvanceTrigger" parent="DarkWizardBoss/ItemDropper" unique_id=1016245066 instance=ExtResource("17_867rx")]
+position = Vector2(-260, -180)
+linked_quest = ExtResource("18_4wfmf")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Magical Flute
+Step: 2 - find the magical flute
+Complete: false"
+
+[connection signal="item_collected" from="DarkWizardBoss/ItemDropper" to="DarkWizardBoss/ItemDropper/QuestAdvanceTrigger" method="advance_quest"]
