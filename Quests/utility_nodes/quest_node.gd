@@ -41,6 +41,13 @@ func update_summary():
 	settings_summary += "Complete: " + str( quest_complete )
 	pass
 	
+	
+func get_prev_step() -> String:
+	if quest_step <= get_step_count() and quest_step > 1:
+		return linked_quest.steps[ quest_step - 2 ]
+	else:
+		return "N/A"
+
 
 func get_step() -> String:
 	if quest_step != 0 and quest_step <= get_step_count():

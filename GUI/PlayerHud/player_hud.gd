@@ -15,6 +15,8 @@ var hearts : Array[ HeartGUI ] = []
 @onready var boss_hp_bar : TextureProgressBar = $Control/BossUI/TextureProgressBar
 @onready var boss_label : Label = $Control/BossUI/Label
 
+@onready var notification: NotificationUI = $Control/Notification
+
 func _ready():
 	for child in $Control/HFlowContainer.get_children():
 		if child is HeartGUI:
@@ -119,4 +121,9 @@ func hide_boss_health():
 func update_boss_health( hp : int, max_hp : int ):
 	boss_hp_bar.value = clampf( ( float(hp) / float(max_hp) ) * 100, 0, 100 )
 	
+	pass
+	
+
+func queue_notification( _title : String, _message : String ):
+	notification.add_notification_to_queue( _title, _message )
 	pass
