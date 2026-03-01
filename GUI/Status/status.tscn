@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bwdl6bpt1m2nl"]
+
+[ext_resource type="Texture2D" uid="uid://drqco1llx6btu" path="res://Items/sprites/items.png" id="1_nyi0l"]
+[ext_resource type="Script" uid="uid://e0avsqr08t38" path="res://GUI/Status/status.gd" id="2_iffp8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mjep"]
+atlas = ExtResource("1_nyi0l")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2mjep"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_2mjep")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="StatsContainer" type="PanelContainer" unique_id=2042121324]
+offset_right = 231.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2mjep")
+script = ExtResource("2_iffp8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=13380991]
+layout_mode = 2
+
+[node name="LevelContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=151790111]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/LevelContainer" unique_id=871305930]
+modulate = Color(0.8288257, 0.6432388, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Level"
+
+[node name="Value" type="Label" parent="VBoxContainer/LevelContainer" unique_id=1764038077]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 2
+
+[node name="XPContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1316739356]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/XPContainer" unique_id=106304551]
+modulate = Color(0.8288257, 0.6432388, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "XP"
+
+[node name="Value" type="Label" parent="VBoxContainer/XPContainer" unique_id=1657922341]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 2
+
+[node name="AttackContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=682592830]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/AttackContainer" unique_id=1557872574]
+modulate = Color(0.8288257, 0.6432388, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Attack"
+
+[node name="Value" type="Label" parent="VBoxContainer/AttackContainer" unique_id=1774669475]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 2
+
+[node name="DefenseContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=794282128]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/DefenseContainer" unique_id=2110857648]
+modulate = Color(0.8288257, 0.6432388, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Defense"
+
+[node name="Value" type="Label" parent="VBoxContainer/DefenseContainer" unique_id=1847514349]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 2

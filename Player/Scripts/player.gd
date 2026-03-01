@@ -8,6 +8,19 @@ var direction  = Vector2.ZERO
 var invulnerable : bool = false
 @export var hp : int = 6
 @export var max_hp : int = 6
+
+@export var level : int = 1
+@export var xp : int = 0
+
+@export var attack : int = 1 : 
+	set ( v ) : 
+		attack = v
+		update_damage_values()
+		
+@export var defense : int = 1 :
+	set ( v ) : 
+		defense = v
+		update_damage_values()
  
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -18,7 +31,6 @@ var invulnerable : bool = false
 @onready var lift : State_Lift = $StateMachine/Lift
 @onready var carry : State_Carry = $StateMachine/Carry
 @onready var held_item : Node2D = $Sprite2D/HeldItem
-
 
 signal direction_changed( new_direction : Vector2 )
 signal player_damaged( hurt_box : HurtBox )
@@ -80,7 +92,11 @@ func _take_damage( hurt_box : HurtBox ):
 		return
 	
 	if hp > 0:
-		update_hp( -hurt_box.damage )
+		var damage : int = hurt_box.damage
+		if( damage > 0 ):
+			damage = clampi( damage - defense, 1, damage )
+	
+		update_hp( -damage )
 		player_damaged.emit( hurt_box )
 	pass
 	
@@ -115,3 +131,9 @@ func pickup_item( _throwable : Throwable ):
 func revive_player():
 	update_hp(3)
 	state_machine.change_state( $StateMachine/Idle )
+	
+
+func update_damage_values():
+	%AttackHurtBox.damage = attack
+	%ChargeSpinHurtBox.damage = attack * 2
+	pass

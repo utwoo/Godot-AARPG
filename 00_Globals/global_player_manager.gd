@@ -5,12 +5,13 @@ const INVENTORY_DATA : InventoryData = preload("uid://c41040a0souiw")
 
 signal camera_shook( trauma : float )
 signal interact_pressed
+signal player_level_up
 
 var interact_handled : bool = true
 var player : Player
 var player_spawned : bool = false
 
-var xp : int = 0
+var level_requirements = [ 0, 20, 50, 100, 200, 400, 800, 1500, 3000, 6000, 12000, 25000 ]
   
 func _ready():
 	add_player_instance()
@@ -22,15 +23,26 @@ func add_player_instance():
 	add_child( player )
 	pass
 
-func set_player_health( _hp: int, _max_hp: int ):
+func set_player_health( _hp : int, _max_hp : int ):
 	player.max_hp = _max_hp
 	player.hp = _hp
 	player.update_hp( 0 )
 	pass
 	
+func set_player_stats( _level : int, _xp : int, _attack : int, _defense : int):
+	player.level = _level
+	player.xp = _xp
+	player.attack = _attack
+	player.defense = _defense
+	pass
 	
 func reward_xp( _xp : int ):
-	xp += xp
+	player.xp += _xp
+	if player.xp >= level_requirements[ player.level ]:
+		player.level += 1
+		player.attack += 1
+		player.defense += 1
+		player_level_up.emit()
 	pass
 
 
@@ -52,4 +64,4 @@ func interact():
 	interact_pressed.emit()
 	
 func shake_camera( trauma : float = 1 ):
-	camera_shook.emit( trauma )
+	camera_shook.emit( clampf( trauma, 0, 3 ) )
