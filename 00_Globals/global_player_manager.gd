@@ -38,11 +38,20 @@ func set_player_stats( _level : int, _xp : int, _attack : int, _defense : int):
 	
 func reward_xp( _xp : int ):
 	player.xp += _xp
+	check_level_up()
+	pass
+	
+
+func check_level_up():
+	if player.level >= level_requirements.size():
+		return
+	
 	if player.xp >= level_requirements[ player.level ]:
 		player.level += 1
 		player.attack += 1
 		player.defense += 1
 		player_level_up.emit()
+		check_level_up()
 	pass
 
 

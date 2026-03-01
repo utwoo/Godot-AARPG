@@ -13,7 +13,12 @@ func _ready():
 func update_stats():
 	var player : Player = PlayerManager.player
 	level_label.text = str( player.level )
-	xp_label.text = str( player.xp ) + "/" + str( PlayerManager.level_requirements[ player.level ] )
+	
+	if player.level < PlayerManager.level_requirements.size():
+		xp_label.text = str( player.xp ) + "/" + str( PlayerManager.level_requirements[ player.level ] )
+	else:
+		xp_label.text = "MAX LVL"
+	
 	attack_label.text = str( player.attack )
 	defense_label.text = str( player.defense )
 	pass

@@ -41,6 +41,7 @@ func _ready():
 	state_machine.initialize( self )
 	hit_box.damaged.connect( _take_damage )
 	update_hp( 99 )
+	PlayerManager.player_level_up.connect( _on_player_level_up )
 	pass
 
 func _process( _delta ):
@@ -136,4 +137,10 @@ func revive_player():
 func update_damage_values():
 	%AttackHurtBox.damage = attack
 	%ChargeSpinHurtBox.damage = attack * 2
+	pass
+	
+
+func _on_player_level_up():
+	effect_animation_player.play( "level_up" )
+	update_hp( max_hp )
 	pass
