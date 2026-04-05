@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bn6m1d1rmbcu5" path="res://Levels/player_spawn.tscn" id="5_mwxiv"]
 [ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="5_sci0f"]
 [ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="7_icgqb"]
+[ext_resource type="Resource" uid="uid://s8oc641vwnya" path="res://Items/weapons/w_iron_sword.tres" id="13_r3wde"]
+[ext_resource type="PackedScene" uid="uid://dx6qiy1snmt5a" path="res://Interactables/TreasureChest/treasure-chest.tscn" id="14_isjcn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5wdb"]
 texture = ExtResource("4_jeo2k")
@@ -566,3 +568,7 @@ position = Vector2(173, 126)
 
 [node name="Pot3" parent="." unique_id=1610206751 instance=ExtResource("7_icgqb")]
 position = Vector2(195, 113)
+
+[node name="TreasureChest" parent="." unique_id=323351900 instance=ExtResource("14_isjcn")]
+position = Vector2(132, 170)
+item_data = ExtResource("13_r3wde")
