@@ -1,11 +1,23 @@
 class_name InventoryData
 extends Resource
 
+signal equipment_changed
+
 @export var slots : Array[ SlotData ]
+var equipment_slot_count : int = 4
 
 func _init():
 	connect_slots()
 	pass
+	
+
+func inventory_slots() -> Array[ SlotData ]:
+	return slots.slice( 0, -equipment_slot_count )
+	
+
+func equipment_slots() -> Array[ SlotData ]:
+	return slots.slice( -equipment_slot_count, slots.size() )
+
 
 func add_item( item : ItemData, count : int = 1 ) -> bool:
 	for s in slots:
@@ -14,7 +26,7 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 				s.quantity += count
 				return true
 		
-	for i in slots.size():
+	for i in inventory_slots().size():
 		if slots [ i ] == null:
 			var new_slot = SlotData.new()
 			new_slot.item_data = item

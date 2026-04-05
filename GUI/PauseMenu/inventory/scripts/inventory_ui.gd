@@ -7,6 +7,11 @@ var focus_index : int = 0
 
 @export var data : InventoryData
 
+@onready var inventory_slot_armor : InventorySlotUI = %InventorySlot_Armor
+@onready var inventory_slot_amulet : InventorySlotUI = %InventorySlot_Amulet
+@onready var inventory_slot_weapon : InventorySlotUI = %InventorySlot_Weapon
+@onready var inventory_slot_ring : InventorySlotUI = %InventorySlot_Ring
+
 func _ready():
 	PauseMenu.shown.connect( update_inventory )
 	PauseMenu.hidden.connect( clear_inventory )
@@ -16,18 +21,26 @@ func _ready():
 	
 func clear_inventory():
 	for c in get_children():
-		c.queue_free()
+		c.set_slot_data( null )
 
-func update_inventory( i : int = 0):
+func update_inventory( apply_focus : bool = true ):
 	clear_inventory()
-	for s in data.slots:
-		var new_slot = INVENTORY_SLOT.instantiate()
-		add_child( new_slot )
-		new_slot.slot_data = s
-		new_slot.focus_entered.connect( item_foucsed )
-		
-	await get_tree().process_frame
-	get_child( i ).grab_focus()
+	
+	var invetory_slots : Array[ SlotData ] = data.inventory_slots()
+	
+	for i in invetory_slots.size():
+		var slot : InventorySlotUI = get_child( i )
+		slot.set_slot_data( invetory_slots[ i ] )
+	
+	# Update eqiupment slots
+	var e_slots : Array[ SlotData ] = data.equipment_slots()
+	inventory_slot_armor.set_slot_data( e_slots[ 0 ] )
+	inventory_slot_weapon.set_slot_data( e_slots[ 1 ] )
+	inventory_slot_amulet.set_slot_data( e_slots[ 2 ] )
+	inventory_slot_ring.set_slot_data( e_slots [ 3 ] )
+	
+	if apply_focus:
+		get_child( 0 ).grab_focus()
 
 func item_foucsed():
 	for i in get_child_count():
