@@ -16,6 +16,7 @@ region = Rect2(128, 0, 32, 32)
 
 [resource]
 script = ExtResource("3_ghfju")
+type = 1
 modifiers = Array[ExtResource("2_a7jn7")]([SubResource("Resource_ruas2")])
 name = "Ninja suit"
 description = "This ninja suit is totally rad, and suprisingly comfy."

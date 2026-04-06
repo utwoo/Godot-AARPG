@@ -76,6 +76,14 @@ func _on_quit_pressed():
 	pass
 
 
+func focused_item_changed( slot : SlotData ):
+	if slot:
+		if slot.item_data:
+			update_item_description( slot.item_data.description )
+	else:
+		update_item_description( "" )
+
+
 func update_item_description( next_text : String ):
 	item_description.text = next_text
 	

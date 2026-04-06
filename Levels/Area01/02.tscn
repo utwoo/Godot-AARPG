@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bn6m1d1rmbcu5" path="res://Levels/player_spawn.tscn" id="5_mwxiv"]
 [ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="5_sci0f"]
 [ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="7_icgqb"]
-[ext_resource type="Resource" uid="uid://s8oc641vwnya" path="res://Items/weapons/w_iron_sword.tres" id="13_r3wde"]
+[ext_resource type="Resource" uid="uid://b2h5mk1u6vn2i" path="res://Items/armors/a_ninja_suit.tres" id="13_r3wde"]
 [ext_resource type="PackedScene" uid="uid://dx6qiy1snmt5a" path="res://Interactables/TreasureChest/treasure-chest.tscn" id="14_isjcn"]
+[ext_resource type="Resource" uid="uid://bgaq6mmdt0wku" path="res://Items/weapons/w_katana.tres" id="14_mxs1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5wdb"]
 texture = ExtResource("4_jeo2k")
@@ -572,3 +573,7 @@ position = Vector2(195, 113)
 [node name="TreasureChest" parent="." unique_id=323351900 instance=ExtResource("14_isjcn")]
 position = Vector2(132, 170)
 item_data = ExtResource("13_r3wde")
+
+[node name="TreasureChest2" parent="." unique_id=392312586 instance=ExtResource("14_isjcn")]
+position = Vector2(77, 215)
+item_data = ExtResource("14_mxs1d")

@@ -18,6 +18,7 @@ region = Rect2(96, 0, 32, 32)
 
 [resource]
 script = ExtResource("3_a4otj")
+type = 1
 modifiers = Array[ExtResource("2_bff3e")]([SubResource("Resource_ruas2")])
 name = "Tunic & Cape"
 description = "The tunic is clean and pressed,

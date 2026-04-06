@@ -17,6 +17,7 @@ func _ready():
 	PauseMenu.hidden.connect( clear_inventory )
 	clear_inventory()
 	data.changed.connect( on_inventory_changed )
+	data.equipment_changed.connect( on_inventory_changed )
 	pass
 	
 func clear_inventory():
@@ -51,4 +52,4 @@ func item_foucsed():
 	pass
  
 func on_inventory_changed():
-	update_inventory( focus_index )
+	update_inventory( false )
