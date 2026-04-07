@@ -28,13 +28,11 @@ func set_slot_data( value : SlotData ):
 		label.text = str( slot_data.quantity )
 	
 func item_focused():
-	if slot_data != null:
-		if slot_data.item_data != null:
-			PauseMenu.update_item_description( slot_data.item_data.description )
+	PauseMenu.focused_item_changed( slot_data )
 	pass
 	
 func item_unfocused():
-	PauseMenu.update_item_description("")
+	PauseMenu.focused_item_changed( null )
 	pass
 
 func item_pressed():

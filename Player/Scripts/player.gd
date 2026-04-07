@@ -21,6 +21,8 @@ var invulnerable : bool = false
 	set ( v ) : 
 		defense = v
 		update_damage_values()
+
+var defense_bonus : int = 0
  
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -42,6 +44,7 @@ func _ready():
 	hit_box.damaged.connect( _take_damage )
 	update_hp( 99 )
 	PlayerManager.player_level_up.connect( _on_player_level_up )
+	PlayerManager.INVENTORY_DATA.equipment_changed.connect( _on_equipment_changed )
 	pass
 
 func _process( _delta ):
@@ -95,7 +98,7 @@ func _take_damage( hurt_box : HurtBox ):
 	if hp > 0:
 		var damage : int = hurt_box.damage
 		if( damage > 0 ):
-			damage = clampi( damage - defense, 1, damage )
+			damage = clampi( damage - defense - defense_bonus, 1, damage )
 	
 		update_hp( -damage )
 		player_damaged.emit( hurt_box )
@@ -135,8 +138,9 @@ func revive_player():
 	
 
 func update_damage_values():
-	%AttackHurtBox.damage = attack
-	%ChargeSpinHurtBox.damage = attack * 2
+	var damage_value = attack + PlayerManager.INVENTORY_DATA.get_attack_bonus()
+	%AttackHurtBox.damage = damage_value
+	%ChargeSpinHurtBox.damage = damage_value * 2
 	pass
 	
 
@@ -144,3 +148,7 @@ func _on_player_level_up():
 	effect_animation_player.play( "level_up" )
 	update_hp( max_hp )
 	pass
+	
+func _on_equipment_changed():
+	update_damage_values()
+	defense_bonus = PlayerManager.INVENTORY_DATA.get_defense_bonus()
