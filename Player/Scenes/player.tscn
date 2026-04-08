@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dg222w5ha7asu" path="res://Player/Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://nmolkhopa4kd" path="res://Player/Sprites/player_sprite.png" id="2_ju8fe"]
 [ext_resource type="Script" uid="uid://fvb7akokd1x" path="res://Player/Scripts/player_state_machine.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://r21lywymccsa" path="res://Player/Scripts/player_script.gd" id="3_efn1h"]
+[ext_resource type="Texture2D" uid="uid://8lfj0kih6jli" path="res://Player/Sprites/player_sprite_sword.png" id="3_nxnwp"]
 [ext_resource type="Texture2D" uid="uid://b2v6h3thvxtdi" path="res://Player/Sprites/AttackSprite01.png" id="3_qo0kk"]
 [ext_resource type="Texture2D" uid="uid://d1kd7q3k48wwr" path="res://Player/Sprites/Shadow.png" id="3_qsune"]
 [ext_resource type="Script" uid="uid://cdtdaigxctgef" path="res://Player/Scripts/state_idle.gd" id="4_vgqql"]
@@ -13,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dq06virodhfm8" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="10_vov0p"]
 [ext_resource type="Script" uid="uid://lshrnoylapuq" path="res://Player/Scripts/player_camera.gd" id="11_n8jjm"]
 [ext_resource type="Script" uid="uid://b4uls87i1ryju" path="res://Player/Scripts/state_stun.gd" id="11_nhcly"]
-[ext_resource type="Script" path="res://Player/Scripts/state_charge_attack.gd" id="12_miu1y"]
+[ext_resource type="Script" uid="uid://b26lue2t8j7t6" path="res://Player/Scripts/state_charge_attack.gd" id="12_miu1y"]
 [ext_resource type="PackedScene" uid="uid://cqbkdkfmdrrfu" path="res://GeneralNodes/HitBox/hit_box.tscn" id="12_n8jjm"]
 [ext_resource type="Script" uid="uid://b2h5yl1bx2ck0" path="res://Player/Scripts/player_interactions_host.gd" id="13_2gkp7"]
 [ext_resource type="AudioStream" uid="uid://dens5gnyujqla" path="res://Player/Audio/hit_player.wav" id="13_b4k72"]
@@ -1604,6 +1606,19 @@ position = Vector2(0, -21)
 texture = ExtResource("2_ju8fe")
 hframes = 16
 vframes = 8
+script = ExtResource("3_efn1h")
+
+[node name="Sprite2D_Weapon_Below" type="Sprite2D" parent="Sprite2D" unique_id=218436890]
+show_behind_parent = true
+texture = ExtResource("3_nxnwp")
+hframes = 16
+vframes = 16
+
+[node name="Sprite2D_Weapon_Above" type="Sprite2D" parent="Sprite2D" unique_id=1177202651]
+texture = ExtResource("3_nxnwp")
+hframes = 16
+vframes = 16
+frame = 128
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D" unique_id=418337799]
 modulate = Color(0, 0, 0, 0.78431374)
