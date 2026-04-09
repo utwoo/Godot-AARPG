@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EquipableItemData" format=3 uid="uid://s8oc641vwnya"]
 
 [ext_resource type="Script" uid="uid://1hieu3wjpj7v" path="res://Items/item_effects/item_effects.gd" id="1_tieok"]
-[ext_resource type="Script" path="res://Items/scripts/equipable_item_modifier.gd" id="2_lorn7"]
+[ext_resource type="Script" uid="uid://sep36nxqotsq" path="res://Items/scripts/equipable_item_modifier.gd" id="2_lorn7"]
 [ext_resource type="Script" uid="uid://cj4r6dtclfo33" path="res://Items/scripts/equipable_item_data.gd" id="3_p382m"]
 [ext_resource type="Texture2D" uid="uid://8lfj0kih6jli" path="res://Player/Sprites/player_sprite_sword.png" id="4_tieok"]
 
