@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EquipableItemData" format=3 uid="uid://c58vs2m8gwh7"]
 
 [ext_resource type="Script" uid="uid://1hieu3wjpj7v" path="res://Items/item_effects/item_effects.gd" id="1_dhhdw"]
-[ext_resource type="Script" uid="uid://sep36nxqotsq" path="res://Items/scripts/equipable_item_modifier.gd" id="2_bff3e"]
+[ext_resource type="Script" path="res://Items/scripts/equipable_item_modifier.gd" id="2_bff3e"]
 [ext_resource type="Script" uid="uid://cj4r6dtclfo33" path="res://Items/scripts/equipable_item_data.gd" id="3_a4otj"]
 [ext_resource type="Texture2D" uid="uid://nmolkhopa4kd" path="res://Player/Sprites/player_sprite.png" id="4_q7krb"]
 

@@ -45,6 +45,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="AARPG"
 
+[global_group]
+
+tilemaps=""
+
 [gui]
 
 theme/custom_font="uid://bno0fmmwqsv8u"
@@ -118,3 +122,4 @@ right_bumper={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
