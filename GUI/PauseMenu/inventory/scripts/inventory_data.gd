@@ -158,3 +158,8 @@ func get_equipment_bonus(
 				bonus += m.value
 	
 	return bonus
+
+func swap_item_by_index( i1 : int, i2 : int):
+	var temp : SlotData = slots[ i1 ]
+	slots[ i1 ] = slots[ i2 ]
+	slots[ i2 ] = temp  

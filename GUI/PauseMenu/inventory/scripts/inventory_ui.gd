@@ -4,6 +4,7 @@ extends Node
 const INVENTORY_SLOT = preload("res://GUI/PauseMenu/inventory/inventory_slot.tscn")
 
 var focus_index : int = 0
+var hovered_item : InventorySlotUI
 
 @export var data : InventoryData
 
@@ -32,6 +33,7 @@ func update_inventory( apply_focus : bool = true ):
 	for i in invetory_slots.size():
 		var slot : InventorySlotUI = get_child( i )
 		slot.set_slot_data( invetory_slots[ i ] )
+		connect_item_signals( slot )
 	
 	# Update eqiupment slots
 	var e_slots : Array[ SlotData ] = data.equipment_slots()
@@ -51,5 +53,31 @@ func item_foucsed():
 			
 	pass
  
-func on_inventory_changed():
+func on_inventory_changed():  
 	update_inventory( false )
+	
+func connect_item_signals( item : InventorySlotUI ): 
+	if not item.button_up.is_connected( on_item_drop ):
+		item.button_up.connect( on_item_drop.bind( item ) )
+	
+	if not item.mouse_entered.is_connected( on_item_mouse_entered ):
+		item.mouse_entered.connect( on_item_mouse_entered.bind( item ))
+	
+	if not item.mouse_exited.is_connected( on_item_mouse_exited ):
+		item.mouse_exited.connect( on_item_mouse_exited)
+	
+func on_item_drop( item: InventorySlotUI ):
+	if item == null or hovered_item == null or item == hovered_item:
+		return
+	else:
+		data.swap_item_by_index( item.get_index(), hovered_item.get_index() )
+		update_inventory( false )
+	pass
+	
+func on_item_mouse_entered( item : InventorySlotUI ):
+	hovered_item = item
+	pass
+	
+func on_item_mouse_exited():
+	hovered_item = null
+	pass
