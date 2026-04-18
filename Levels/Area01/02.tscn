@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bn6m1d1rmbcu5" path="res://Levels/player_spawn.tscn" id="5_mwxiv"]
 [ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="5_sci0f"]
 [ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="7_icgqb"]
+[ext_resource type="PackedScene" uid="uid://cmdfj3pseg8vv" path="res://Levels/level_transition_interact.tscn" id="11_5l2i7"]
 [ext_resource type="Resource" uid="uid://b2h5mk1u6vn2i" path="res://Items/armors/a_ninja_suit.tres" id="13_r3wde"]
 [ext_resource type="PackedScene" uid="uid://dx6qiy1snmt5a" path="res://Interactables/TreasureChest/treasure-chest.tscn" id="14_isjcn"]
 [ext_resource type="Resource" uid="uid://bgaq6mmdt0wku" path="res://Items/weapons/w_katana.tres" id="14_mxs1d"]
@@ -560,6 +561,12 @@ level = "uid://dqxl4xm2m55i6"
 position = Vector2(80, 64)
 level = "uid://cax6iyfxvvvxe"
 center_player = true
+side = 2
+
+[node name="LevelTransitionShop" parent="." unique_id=1582734176 instance=ExtResource("11_5l2i7")]
+position = Vector2(224, 187)
+level = "uid://c351xp8wugroq"
+size = 1
 side = 2
 
 [node name="Goblin" parent="." unique_id=1830667053 instance=ExtResource("4_tek06")]
