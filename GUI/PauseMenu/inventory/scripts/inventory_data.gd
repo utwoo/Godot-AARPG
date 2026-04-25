@@ -162,4 +162,11 @@ func get_equipment_bonus(
 func swap_item_by_index( i1 : int, i2 : int):
 	var temp : SlotData = slots[ i1 ]
 	slots[ i1 ] = slots[ i2 ]
-	slots[ i2 ] = temp  
+	slots[ i2 ] = temp
+	
+func get_item_held_quantity( item : ItemData ) -> int:
+	for slot in slots:
+		if slot and slot.item_data:
+			if slot.item_data == item:
+				return slot.quantity
+	return 0

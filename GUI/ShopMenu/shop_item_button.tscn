@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dy4tmy24455ro"]
 
 [ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="1_knyqw"]
+[ext_resource type="Script" uid="uid://dgg7cnm1bfjqe" path="res://GUI/ShopMenu/shop_item_button.gd" id="1_v1j0x"]
 [ext_resource type="Texture2D" uid="uid://drqco1llx6btu" path="res://Items/sprites/items.png" id="2_v1j0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsd0y"]
@@ -11,6 +12,7 @@ region = Rect2(0, 0, 32, 32)
 custom_minimum_size = Vector2(220, 30)
 offset_right = 145.0
 offset_bottom = 26.0
+script = ExtResource("1_v1j0x")
 
 [node name="Label" type="Label" parent="." unique_id=288251435]
 layout_mode = 0

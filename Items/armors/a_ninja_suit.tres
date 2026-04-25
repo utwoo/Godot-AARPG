@@ -28,3 +28,4 @@ sprite_texture = ExtResource("4_xs3d4")
 name = "Ninja suit"
 description = "This ninja suit is totally rad, and suprisingly comfy."
 texture = SubResource("AtlasTexture_inskq")
+cost = 600
