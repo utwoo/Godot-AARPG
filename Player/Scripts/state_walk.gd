@@ -4,6 +4,7 @@ extends State
 @export var move_speed : float = 100.0
 @onready var idle : State = $"../Idle"
 @onready var attack : State = $"../Attack"
+@onready var dash: State_Dash = $"../Dash"
 
 # What happen when the player enters this state
 func enter() -> void:
@@ -25,6 +26,8 @@ func process(_delta) -> State:
 func handle_input( _event : InputEvent ) -> State:
 	if _event.is_action_pressed("attack"):
 		return attack
-	if _event.is_action_pressed("interact"):
+	elif _event.is_action_pressed("interact"):
 		PlayerManager.interact()
+	elif _event.is_action("dash"):
+		return dash
 	return null

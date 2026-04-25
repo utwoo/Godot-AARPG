@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://dwgrs2wpdste5" path="res://Player/Scripts/death.gd" id="20_drxtx"]
 [ext_resource type="AudioStream" uid="uid://tfign5084bd4" path="res://Player/Audio/throw.wav" id="20_p0l7e"]
 [ext_resource type="AudioStream" uid="uid://coukidj02g5t6" path="res://Player/Audio/exhausted.wav" id="21_drxtx"]
+[ext_resource type="Script" uid="uid://dgms3l8f87ohe" path="res://Player/Scripts/state_dash.gd" id="24_h4mmb"]
 [ext_resource type="AudioStream" uid="uid://dl53clcexdvpe" path="res://Player/Audio/level_up_jingle.wav" id="27_0isv7"]
 [ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="29_y1muo"]
 [ext_resource type="PackedScene" uid="uid://cse133xixq2rc" path="res://GeneralNodes/Footstep_audio/footstep_audio.tscn" id="33_kqrd2"]
@@ -1131,6 +1132,99 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_pap50"]
+resource_name = "dash_down"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0x0ja"]
+resource_name = "dash_side"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v74qa"]
+resource_name = "dash_up"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_h4mmb"]
 resource_name = "death"
 length = 0.4
@@ -1486,6 +1580,9 @@ _data = {
 &"charge_walk_down": SubResource("Animation_bf386"),
 &"charge_walk_side": SubResource("Animation_e0sep"),
 &"charge_walk_up": SubResource("Animation_17k2o"),
+&"dash_down": SubResource("Animation_pap50"),
+&"dash_side": SubResource("Animation_0x0ja"),
+&"dash_up": SubResource("Animation_v74qa"),
 &"death": SubResource("Animation_h4mmb"),
 &"idle_down": SubResource("Animation_cvnsp"),
 &"idle_side": SubResource("Animation_fkybt"),
@@ -1857,6 +1954,12 @@ throw_audio = ExtResource("20_p0l7e")
 [node name="Death" type="Node" parent="StateMachine" unique_id=1049266410]
 script = ExtResource("20_drxtx")
 exhaust_audio = ExtResource("21_drxtx")
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=348491125]
+script = ExtResource("24_h4mmb")
+move_speed = 250.0
+effect_delay = 0.05
+effect_audio = ExtResource("18_aytf0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1685489216]
 visible = false

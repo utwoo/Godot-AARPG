@@ -43,7 +43,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		hide_menu()
 
 func show_menu( items : Array[ ItemData ] ):
-	print(items)
 	await DialogSystem.finished
 	enabled_menu()
 	populate_item_list( items )

@@ -35,7 +35,6 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 			new_slot.changed.connect( slot_changed )
 			return true
 	
-	print("Inventory was full!")
 	return false
 
 
