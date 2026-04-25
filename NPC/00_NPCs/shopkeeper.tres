@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NPCResource" format=3 uid="uid://b3gg0hysa0wuy"]
+
+[ext_resource type="Texture2D" uid="uid://dsjb0crl57h58" path="res://NPC/Sprites/portraits/portrait_placeholder.png" id="1_4u1ok"]
+[ext_resource type="Script" uid="uid://4xqiq4esm22" path="res://NPC/Scripts/npc_resource.gd" id="1_pd6wc"]
+[ext_resource type="Texture2D" uid="uid://cghwcvsowr3u2" path="res://NPC/Sprites/shopkeeper.png" id="3_welf3"]
+
+[resource]
+script = ExtResource("1_pd6wc")
+sprite = ExtResource("3_welf3")
+portrait = ExtResource("1_4u1ok")
+metadata/_custom_type_script = "uid://4xqiq4esm22"
