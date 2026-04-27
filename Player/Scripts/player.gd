@@ -23,6 +23,9 @@ var invulnerable : bool = false
 		update_damage_values()
 
 var defense_bonus : int = 0
+
+var arrow_count : int = 2
+var bomb_count : int = 10
  
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
