@@ -11,6 +11,12 @@ var hearts : Array[ HeartGUI ] = []
 @onready var animation_player : AnimationPlayer = $Control/GameOver/AnimationPlayer
 @onready var audio : AudioStreamPlayer = $AudioStreamPlayer
 
+
+@onready var abilities : Control = $Control/Abilities
+@onready var abilitiy_items : HBoxContainer = $Control/Abilities/HBoxContainer
+@onready var arrow_count_label : Label = %ArrowCountLabel
+@onready var bomb_count_label : Label = %BombCountLabel
+
 @onready var boss_ui : Control = $Control/BossUI
 @onready var boss_hp_bar : TextureProgressBar = $Control/BossUI/TextureProgressBar
 @onready var boss_label : Label = $Control/BossUI/Label
@@ -34,7 +40,12 @@ func _ready():
 	LevelManager.level_load_started.connect( hide_game_over_screen )
 	
 	hide_boss_health()
-	
+
+	update_ability_ui( 0 )
+		
+	PauseMenu.shown.connect( _on_show_pause )
+	PauseMenu.hidden.connect( _on_hide_pause )
+
 	pass
 
 func update_hp( _hp: int, _max_hp: int ):
@@ -101,11 +112,9 @@ func title_screen():
 	LevelManager.load_new_level( "res://TitleScene/title_scene.tscn", "", Vector2.ZERO )
 	pass
 
-
 func play_audio( _audio : AudioStream ):
 	audio.stream = _audio
 	audio.play()
-
 
 func show_boss_health( boss_name : String ):
 	boss_ui.visible = true
@@ -113,17 +122,39 @@ func show_boss_health( boss_name : String ):
 	update_boss_health( 1, 1 )
 	pass
 
-
 func hide_boss_health():
 	boss_ui.visible = false
 	pass
-	
+
 func update_boss_health( hp : int, max_hp : int ):
 	boss_hp_bar.value = clampf( ( float(hp) / float(max_hp) ) * 100, 0, 100 )
-	
 	pass
-	
 
 func queue_notification( _title : String, _message : String ):
 	notification_ui.add_notification_to_queue( _title, _message )
 	pass
+	
+func update_arrow_count( count : int ):
+	arrow_count_label.text = str( count )
+	pass
+	
+func update_bomb_count( count : int ):
+	bomb_count_label.text = str( count )
+	pass
+
+func update_ability_ui( ability_index : int ):
+	var items : Array[ Node ] = abilitiy_items.get_children()
+	for a in items:
+		a.self_modulate = Color(1,1,1,0)
+		a.modulate = Color(0.6,0.6,0.6,0.8)
+		
+	items[ ability_index ].self_modulate = Color(1,1,1,1)
+	items[ ability_index ].modulate = Color(1,1,1,1)
+	
+	play_audio( button_focus_audio )
+
+func _on_show_pause():
+	abilities.hide()
+
+func _on_hide_pause():
+	abilities.show()

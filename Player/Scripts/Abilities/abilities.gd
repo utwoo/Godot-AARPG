@@ -2,21 +2,29 @@ class_name PlayAbilities
 extends Node
 
 const BOOMERANG = preload("res://Player/Scenes/boomerang.tscn")
+var abilities : Array[ String ] = [
+	"BOOMERANG", "GRAPPLE", "BOW", "BOMB"
+]
 
-enum abilities { BOOMERANG }
-
-var selected_ability = abilities.BOOMERANG
+var selected_ability : int = 0
 var player : Player
 var boomerang_instance : Boomerang = null
 
 func _ready():
 	player = PlayerManager.player
+	PlayerHud.update_arrow_count( player.arrow_count )
+	PlayerHud.update_bomb_count( player.bomb_count )
 	pass
 
 func _unhandled_input( event : InputEvent ):
 	if event.is_action_pressed("ability"):
-		if selected_ability == abilities.BOOMERANG:
-			boomerang_ability()
+		match selected_ability:
+			0: boomerang_ability()
+			1: print("Grapple hook!")
+			2: print("Bow hook!")
+			3: print("Bomb hook!")
+	elif event.is_action_pressed("switch_ability"):
+		toggle_ability()
 	pass
 	
 func boomerang_ability():
@@ -34,3 +42,8 @@ func boomerang_ability():
 	
 	boomerang_instance = _b
 	pass
+
+func toggle_ability():
+	selected_ability = wrapi( selected_ability + 1, 0, 4 )
+	PlayerHud.update_ability_ui( selected_ability )
+	
