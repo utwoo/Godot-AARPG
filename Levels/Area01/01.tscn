@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="23_mpmqi"]
 [ext_resource type="PackedScene" uid="uid://dnete4104lbhm" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="25_hvqxe"]
 [ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="25_mpmqi"]
+[ext_resource type="PackedScene" uid="uid://d01tyaukbh447" path="res://Interactables/Bomb/bomb.tscn" id="27_blojo"]
 
 [sub_resource type="GDScript" id="GDScript_hvqxe"]
 script/source = "extends Node
@@ -72,7 +73,7 @@ position = Vector2(390.9964, 259.02722)
 item_data = ExtResource("7_th3kk")
 
 [node name="Slime" parent="." unique_id=919455436 instance=ExtResource("9_b60gt")]
-position = Vector2(34, 84)
+position = Vector2(112, 81)
 
 [node name="TreasureChest" parent="." unique_id=380576144 instance=ExtResource("10_f2d14")]
 position = Vector2(428, 79)
@@ -270,6 +271,9 @@ script = SubResource("GDScript_hvqxe")
 
 [node name="Pot" parent="." unique_id=575496767 instance=ExtResource("23_8k3ch")]
 position = Vector2(377, 157)
+
+[node name="Bomb" parent="." unique_id=841602554 instance=ExtResource("27_blojo")]
+position = Vector2(70, 80)
 
 [connection signal="selected" from="NPC_Nero/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" to="NPC_Nero/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/QuestAdvanceTrigger" method="advance_quest"]
 [connection signal="finished" from="NPC_Nero/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction" to="NPC_Nero/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger" method="advance_quest"]
