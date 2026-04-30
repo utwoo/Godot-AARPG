@@ -273,7 +273,7 @@ script = SubResource("GDScript_hvqxe")
 position = Vector2(377, 157)
 
 [node name="Bomb" parent="." unique_id=841602554 instance=ExtResource("27_blojo")]
-position = Vector2(70, 80)
+position = Vector2(312, 85)
 
 [connection signal="selected" from="NPC_Nero/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" to="NPC_Nero/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/QuestAdvanceTrigger" method="advance_quest"]
 [connection signal="finished" from="NPC_Nero/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction" to="NPC_Nero/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger" method="advance_quest"]
