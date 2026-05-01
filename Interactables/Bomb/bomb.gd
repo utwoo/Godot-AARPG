@@ -40,9 +40,9 @@ func hit_ground():
 		set_physics_process( false )
 		hurt_box.set_deferred( "monitoring", false )
 		hurt_box.did_damage.disconnect( did_damage )
-		wall_detect.body_entered.disconnect( _on_body_entered )
-		area_entered.disconnect( _on_area_enter )
-		area_exited.disconnect( _on_area_exit )
+		#wall_detect.body_entered.disconnect( _on_body_entered )
+		#area_entered.disconnect( _on_area_enter )
+		#area_exited.disconnect( _on_area_exit )
 		
 func did_damage():
 	var throw_magnitude : Vector2 = throw_direction.abs()

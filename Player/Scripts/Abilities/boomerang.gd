@@ -6,7 +6,7 @@ enum State { INACTIVE, THROW, RETURN }
 var player : Player
 var direction : Vector2
 var speed : float = 0.0
-var state 
+var state
 
 @export var acceleration : float = 500.0
 @export var max_speed : float = 400

@@ -24,13 +24,13 @@ var invulnerable : bool = false
 
 var defense_bonus : int = 0
 
-var arrow_count : int = 2
+var arrow_count : int = 10
 var bomb_count : int = 10
  
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player : AnimationPlayer = $EffectAnimationPlayer
-@onready var state_machine = $StateMachine
+@onready var state_machine : PlayerStateMachine = $StateMachine
 @onready var hit_box : HitBox = $HitBox
 @onready var audio = $Audio/AudioStreamPlayer2D
 @onready var lift : State_Lift = $StateMachine/Lift

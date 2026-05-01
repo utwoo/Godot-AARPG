@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ddfutvj84jcg"]
+
+[ext_resource type="Texture2D" uid="uid://1bxbxc08s82g" path="res://Interactables/Arrow/arrow.png" id="1_afle5"]
+[ext_resource type="Script" uid="uid://cwt8ex6o0virx" path="res://Interactables/Arrow/arrow.gd" id="1_sxn2q"]
+[ext_resource type="Script" uid="uid://c2lyl7ybjuunc" path="res://GeneralNodes/HurtBox/hurt_box.gd" id="2_sxn2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afle5"]
+size = Vector2(23, 6)
+
+[node name="Arrow" type="Node2D" unique_id=1037052859]
+script = ExtResource("1_sxn2q")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=2126975102]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("2_sxn2q")
+metadata/_custom_type_script = "uid://c2lyl7ybjuunc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1004244100]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_afle5")
+
+[node name="ArrowSprite2D" type="Sprite2D" parent="." unique_id=1260040688]
+texture = ExtResource("1_afle5")
+offset = Vector2(0, -17)
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=1070465156]
+modulate = Color(0, 0, 0, 0.25)
+texture = ExtResource("1_afle5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1862339692]
