@@ -17,12 +17,12 @@ script = ExtResource("2_sxn2q")
 metadata/_custom_type_script = "uid://c2lyl7ybjuunc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1004244100]
-position = Vector2(0.5, 0)
+position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_afle5")
 
 [node name="ArrowSprite2D" type="Sprite2D" parent="." unique_id=1260040688]
+position = Vector2(0, -17)
 texture = ExtResource("1_afle5")
-offset = Vector2(0, -17)
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=1070465156]
 modulate = Color(0, 0, 0, 0.25)
