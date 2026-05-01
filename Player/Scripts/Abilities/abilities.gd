@@ -1,7 +1,9 @@
 class_name PlayAbilities
 extends Node
 
-const BOOMERANG = preload("res://Player/Scenes/boomerang.tscn")
+const BOOMERANG = preload("uid://diys2hqublq37")
+const BOMB = preload("uid://d01tyaukbh447")
+
 var abilities : Array[ String ] = [
 	"BOOMERANG", "GRAPPLE", "BOW", "BOMB"
 ]
@@ -9,6 +11,11 @@ var abilities : Array[ String ] = [
 var selected_ability : int = 0
 var player : Player
 var boomerang_instance : Boomerang = null
+
+@onready var state_machine: PlayerStateMachine = $"../StateMachine"
+@onready var idle: State_Idle = $"../StateMachine/Idle"
+@onready var walk: State_Walk = $"../StateMachine/Walk"
+@onready var lift: State_Lift = $"../StateMachine/Lift"
 
 func _ready():
 	player = PlayerManager.player
@@ -22,7 +29,7 @@ func _unhandled_input( event : InputEvent ):
 			0: boomerang_ability()
 			1: print("Grapple hook!")
 			2: print("Bow hook!")
-			3: print("Bomb hook!")
+			3: bomb_ability()
 	elif event.is_action_pressed("switch_ability"):
 		toggle_ability()
 	pass
@@ -41,6 +48,25 @@ func boomerang_ability():
 	_b.throw( throw_direction )
 	
 	boomerang_instance = _b
+	pass
+	
+func bomb_ability():
+	if player.bomb_count <= 0:
+		return
+	else:
+		if state_machine.current_state == idle or state_machine.current_state == walk:
+			# Decrease bomb count
+			player.bomb_count -= 1
+			# Update player hud
+			PlayerHud.update_bomb_count( player.bomb_count )
+			# Initialize a new bomb
+			var bomb : Node2D = BOMB.instantiate()
+			player.add_sibling( bomb )
+			bomb.position = player.position
+			lift.animation_seek = 0.2
+			PlayerManager.interact_handled = false
+			var throwable : Throwable = bomb.find_child( "Throwable" )
+			throwable.player_interact()
 	pass
 
 func toggle_ability():

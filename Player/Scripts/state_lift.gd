@@ -5,8 +5,7 @@ extends State
 
 @onready var carry = $"../Carry"
 
-func _ready():
-	pass # Replace with function body.
+var animation_seek = 0
 
 # What happen when we initialize this state
 func init() -> void:
@@ -15,6 +14,8 @@ func init() -> void:
 # What happen when the player enters this state
 func enter() -> void:
 	player.update_animation( "lift" )
+	if animation_seek != 0:
+		player.animation_player.seek( animation_seek )
 	player.animation_player.animation_finished.connect( state_complete )
 	player.audio.stream = lift_audio
 	player.audio.play()
@@ -22,6 +23,7 @@ func enter() -> void:
 
 # What happen when the player exits this state
 func exit() -> void:
+	animation_seek = 0
 	pass
 
 # What happen during the _process update in this state
