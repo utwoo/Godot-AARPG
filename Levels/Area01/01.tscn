@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dwmq3idbsxhoh" path="res://Props/Plants/plant.tscn" id="5_pwydo"]
 [ext_resource type="PackedScene" uid="uid://b6ctd7n60iuvm" path="res://Items/item_pickup/item_pickup.tscn" id="6_xhij5"]
 [ext_resource type="Resource" uid="uid://bedqtc5g48wpg" path="res://Items/gem.tres" id="7_th3kk"]
+[ext_resource type="Resource" uid="uid://difhig7yuwacc" path="res://Items/bomb.tres" id="8_7f7fh"]
 [ext_resource type="Resource" uid="uid://bpfit3tnwae6r" path="res://Items/potion.tres" id="8_th3kk"]
 [ext_resource type="PackedScene" uid="uid://be880rni4jo7s" path="res://Enemies/Slime/Slime.tscn" id="9_b60gt"]
+[ext_resource type="Resource" uid="uid://hh0g6brk7ikw" path="res://Items/arrow.tres" id="10_blojo"]
 [ext_resource type="PackedScene" uid="uid://dx6qiy1snmt5a" path="res://Interactables/TreasureChest/treasure-chest.tscn" id="10_f2d14"]
 [ext_resource type="AudioStream" uid="uid://dpm2517mdalxs" path="res://Levels/Music/example_music_01.ogg" id="11_an23e"]
 [ext_resource type="PackedScene" uid="uid://d0xtl5nafmkfl" path="res://NPC/npc.tscn" id="12_c2gse"]
@@ -26,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="23_mpmqi"]
 [ext_resource type="PackedScene" uid="uid://dnete4104lbhm" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="25_hvqxe"]
 [ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://Quests/recover_lost_flute.tres" id="25_mpmqi"]
-[ext_resource type="PackedScene" uid="uid://d01tyaukbh447" path="res://Interactables/Bomb/bomb.tscn" id="27_blojo"]
 
 [sub_resource type="GDScript" id="GDScript_hvqxe"]
 script/source = "extends Node
@@ -62,15 +63,18 @@ position = Vector2(354, 74)
 
 [node name="ItemPickup" parent="." unique_id=2026577212 instance=ExtResource("6_xhij5")]
 position = Vector2(309.78247, 151.38315)
-item_data = ExtResource("7_th3kk")
+item_data = ExtResource("8_7f7fh")
+item_count = 10
 
 [node name="ItemPickup2" parent="." unique_id=775650957 instance=ExtResource("6_xhij5")]
 position = Vector2(311, 186.94206)
 item_data = ExtResource("8_th3kk")
+item_count = 1
 
 [node name="ItemPickup3" parent="." unique_id=991493168 instance=ExtResource("6_xhij5")]
-position = Vector2(390.9964, 259.02722)
-item_data = ExtResource("7_th3kk")
+position = Vector2(378, 188)
+item_data = ExtResource("10_blojo")
+item_count = 10
 
 [node name="Slime" parent="." unique_id=919455436 instance=ExtResource("9_b60gt")]
 position = Vector2(112, 81)
@@ -271,9 +275,6 @@ script = SubResource("GDScript_hvqxe")
 
 [node name="Pot" parent="." unique_id=575496767 instance=ExtResource("23_8k3ch")]
 position = Vector2(377, 157)
-
-[node name="Bomb" parent="." unique_id=841602554 instance=ExtResource("27_blojo")]
-position = Vector2(120, 127)
 
 [connection signal="selected" from="NPC_Nero/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" to="NPC_Nero/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/QuestAdvanceTrigger" method="advance_quest"]
 [connection signal="finished" from="NPC_Nero/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction" to="NPC_Nero/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger" method="advance_quest"]

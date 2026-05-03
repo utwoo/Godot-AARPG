@@ -9,8 +9,8 @@ extends Node2D
 
 var move_direction : Vector2 = Vector2.RIGHT
 
-@onready var hurt_box: HurtBox = $HurtBox
 @onready var arrow_sprite: Sprite2D = $ArrowSprite2D
+@onready var hurt_box: HurtBox = $ArrowSprite2D/HurtBox
 @onready var shadow_sprite: Sprite2D = $ShadowSprite2D
 @onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -36,7 +36,6 @@ func rotation_node():
 	arrow_sprite.rotation = angle
 	shadow_sprite.position = _get_shadow_offset_for_direction(move_direction)
 	shadow_sprite.rotation = angle
-	hurt_box.rotation = angle
 	pass
 
 func _get_shadow_offset_for_direction(direction: Vector2) -> Vector2:
