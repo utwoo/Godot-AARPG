@@ -17,6 +17,7 @@ var boomerang_instance : Boomerang = null
 @onready var walk: State_Walk = $"../StateMachine/Walk"
 @onready var lift: State_Lift = $"../StateMachine/Lift"
 @onready var bow: State_Bow = $"../StateMachine/Bow"
+@onready var grapple: State_Grapple = $"../StateMachine/Grapple"
 
 func _ready():
 	player = PlayerManager.player
@@ -28,7 +29,7 @@ func _unhandled_input( event : InputEvent ):
 	if event.is_action_pressed("ability"):
 		match selected_ability:
 			0: boomerang_ability()
-			1: print("Grapple hook!")
+			1: grapple_ability()
 			2: bow_ability()
 			3: bomb_ability()
 	elif event.is_action_pressed("switch_ability"):
@@ -49,6 +50,12 @@ func boomerang_ability():
 	_b.throw( throw_direction )
 	
 	boomerang_instance = _b
+	pass
+
+func grapple_ability():
+	if state_machine.current_state == idle or state_machine.current_state == walk:
+		# change to grapple state
+		player.state_machine.change_state( grapple )
 	pass
 	
 func bomb_ability():

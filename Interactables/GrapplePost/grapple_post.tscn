@@ -6,7 +6,7 @@
 size = Vector2(12, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oan0d"]
-size = Vector2(16, 10)
+size = Vector2(16, 17)
 
 [node name="GrapplePost" type="Node2D" unique_id=2021826630]
 
@@ -26,5 +26,5 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrapplePointStaticBody2D" unique_id=2103054559]
-position = Vector2(0, -3)
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_oan0d")

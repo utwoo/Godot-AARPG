@@ -32,7 +32,7 @@ var bomb_count : int = 10 : set = _set_bomb_count
 @onready var effect_animation_player : AnimationPlayer = $EffectAnimationPlayer
 @onready var state_machine : PlayerStateMachine = $StateMachine
 @onready var hit_box : HitBox = $HitBox
-@onready var audio = $Audio/AudioStreamPlayer2D
+@onready var audio : AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
 @onready var lift : State_Lift = $StateMachine/Lift
 @onready var carry : State_Carry = $StateMachine/Carry
 @onready var held_item : Node2D = $Sprite2D/HeldItem
