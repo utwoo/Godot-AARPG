@@ -5,7 +5,7 @@ const BOOMERANG = preload("uid://diys2hqublq37")
 const BOMB = preload("uid://d01tyaukbh447")
 
 var abilities : Array[ String ] = [
-	"BOOMERANG", "GRAPPLE", "BOW", "BOMB"
+	"BOOMERANG", "GRAPPLE", "BOW", "BOMB" # "BOOMERANG","GRAPPLE","BOW","BOMB"
 ]
 
 var selected_ability : int = 0
@@ -23,6 +23,7 @@ func _ready():
 	player = PlayerManager.player
 	PlayerHud.update_arrow_count( player.arrow_count )
 	PlayerHud.update_bomb_count( player.bomb_count )
+	setup_abilities()
 	pass
 
 func _unhandled_input( event : InputEvent ):
@@ -91,6 +92,15 @@ func bow_ability():
 	pass
 
 func toggle_ability():
+	if abilities.count( "" ) == abilities.size():
+		return
 	selected_ability = wrapi( selected_ability + 1, 0, 4 )
+	if abilities[ selected_ability ] == "":
+		selected_ability = wrapi( selected_ability + 1, 0, 4 )
 	PlayerHud.update_ability_ui( selected_ability )
+	pass
 	
+func setup_abilities():
+	PauseMenu.update_ability_items( abilities )
+	PlayerHud.update_ability_items( abilities )
+	pass

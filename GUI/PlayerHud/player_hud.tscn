@@ -497,46 +497,47 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Abilities" unique_id=1420247141]
+[node name="AbilityContainer" type="HBoxContainer" parent="Control/Abilities" unique_id=1420247141]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=751841068]
+[node name="TextureRect" type="TextureRect" parent="Control/Abilities/AbilityContainer" unique_id=751841068]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_j13li")
 
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect" unique_id=1607759304]
+[node name="TextureRect" type="TextureRect" parent="Control/Abilities/AbilityContainer/TextureRect" unique_id=1607759304]
 layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
 texture = SubResource("AtlasTexture_l1h3f")
 stretch_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=1187950829]
+[node name="TextureRect2" type="TextureRect" parent="Control/Abilities/AbilityContainer" unique_id=1187950829]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_j13li")
 
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect2" unique_id=12189205]
+[node name="TextureRect" type="TextureRect" parent="Control/Abilities/AbilityContainer/TextureRect2" unique_id=12189205]
 layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
 texture = SubResource("AtlasTexture_j13li")
 stretch_mode = 3
 
-[node name="TextureRect3" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=253099643]
+[node name="TextureRect3" type="TextureRect" parent="Control/Abilities/AbilityContainer" unique_id=253099643]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_j13li")
 
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect3" unique_id=1918407820]
+[node name="TextureRect" type="TextureRect" parent="Control/Abilities/AbilityContainer/TextureRect3" unique_id=1918407820]
 layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
 texture = SubResource("AtlasTexture_emwnl")
 stretch_mode = 3
 
-[node name="ArrowCountLabel" type="Label" parent="Control/Abilities/HBoxContainer/TextureRect3" unique_id=1849579410]
+[node name="ArrowCountLabel" type="Label" parent="Control/Abilities/AbilityContainer/TextureRect3" unique_id=1849579410]
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = 18.0
@@ -547,18 +548,18 @@ theme_override_fonts/font = ExtResource("5_we5y0")
 text = "99"
 horizontal_alignment = 1
 
-[node name="TextureRect4" type="TextureRect" parent="Control/Abilities/HBoxContainer" unique_id=1154155323]
+[node name="TextureRect4" type="TextureRect" parent="Control/Abilities/AbilityContainer" unique_id=1154155323]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_j13li")
 
-[node name="TextureRect" type="TextureRect" parent="Control/Abilities/HBoxContainer/TextureRect4" unique_id=1137832117]
+[node name="TextureRect" type="TextureRect" parent="Control/Abilities/AbilityContainer/TextureRect4" unique_id=1137832117]
 layout_mode = 0
 offset_right = 24.0
 offset_bottom = 24.0
 texture = SubResource("AtlasTexture_2ru4r")
 stretch_mode = 3
 
-[node name="BombCountLabel" type="Label" parent="Control/Abilities/HBoxContainer/TextureRect4" unique_id=2065510142]
+[node name="BombCountLabel" type="Label" parent="Control/Abilities/AbilityContainer/TextureRect4" unique_id=2065510142]
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = 18.0

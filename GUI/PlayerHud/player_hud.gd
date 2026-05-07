@@ -13,7 +13,7 @@ var hearts : Array[ HeartGUI ] = []
 
 
 @onready var abilities : Control = $Control/Abilities
-@onready var abilitiy_items : HBoxContainer = $Control/Abilities/HBoxContainer
+@onready var abilitiy_items : HBoxContainer = $Control/Abilities/AbilityContainer
 @onready var arrow_count_label : Label = %ArrowCountLabel
 @onready var bomb_count_label : Label = %BombCountLabel
 
@@ -153,6 +153,15 @@ func update_ability_ui( ability_index : int ):
 	
 	play_audio( button_focus_audio )
 
+func update_ability_items( items : Array[ String ] ):
+	var ability_item : Array[ Node ] =%AbilityContainer.get_children()
+	for i in ability_item.size():
+		if items[ i ] == "":
+			ability_item[ i ].visible = false
+		else:
+			ability_item[ i ].visible = true
+	pass
+	
 func _on_show_pause():
 	abilities.hide()
 

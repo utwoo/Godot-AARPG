@@ -7,6 +7,7 @@ extends State
 @onready var nine_patch_rect: NinePatchRect = $"../../GrappleHook/NinePatchRect"
 @onready var chain_audio_player: AudioStreamPlayer2D = $"../../GrappleHook/AudioStreamPlayer2D"
 @onready var grapple_ray_cast: RayCast2D = %GrappleRayCast2D
+@onready var grapple_hurt_box: HurtBox = $"../../GrappleHook/NinePatchRect/Control/HurtBox"
 
 @export var grapple_distance : float = 100.0
 @export var grapple_speed : float = 200
@@ -44,12 +45,14 @@ func init() -> void:
 	grapple_hook.hide()
 	grapple_ray_cast.enabled = false
 	grapple_ray_cast.target_position.y = grapple_distance
+	grapple_hurt_box.monitoring = false
 	pass
 	
 # What happen when the player enters this state
 func enter() -> void:
 	player.update_animation( "idle" )
 	grapple_hook.show()
+	grapple_hurt_box.monitoring = true
 	
 	# set grapple hook direction
 	set_grapple_direction()
@@ -70,6 +73,7 @@ func exit() -> void:
 	chain_audio_player.stop()
 	tween.kill()
 	nine_patch_rect.size.y = nine_patch_size
+	grapple_hurt_box.monitoring = false
 	pass
 
 # What happen during the _process update in this state

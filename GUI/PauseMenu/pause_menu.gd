@@ -104,3 +104,12 @@ func change_tab( i : int = 1 ):
 func preview_stats( item : ItemData ):
 	preview_stats_changed.emit( item )
 	pass
+	
+func update_ability_items( items : Array[ String ] ):
+	var items_button : Array[ Node ] = %AbilityGridContainer.get_children()
+	for i in items_button.size():
+		if items[ i ] == "":
+			items_button[ i ].visible = false
+		else:
+			items_button[ i ].visible = true
+	pass
