@@ -5,7 +5,7 @@ const BOOMERANG = preload("uid://diys2hqublq37")
 const BOMB = preload("uid://d01tyaukbh447")
 
 var abilities : Array[ String ] = [
-	"BOOMERANG", "GRAPPLE", "BOW", "BOMB" # "BOOMERANG","GRAPPLE","BOW","BOMB"
+	"", "", "", "" # "BOOMERANG","GRAPPLE","BOW","BOMB"
 ]
 
 var selected_ability : int = 0
@@ -25,6 +25,7 @@ func _ready():
 	PlayerHud.update_bomb_count( player.bomb_count )
 	setup_abilities()
 	SaveManager.game_loaded.connect( _on_game_loaded )
+	PlayerManager.INVENTORY_DATA.ability_acquired.connect( _on_ability_acquired )
 	pass
 
 func _unhandled_input( event : InputEvent ):
@@ -101,10 +102,10 @@ func toggle_ability():
 	PlayerHud.update_ability_ui( selected_ability )
 	pass
 	
-func setup_abilities():
+func setup_abilities( selected_index : int  = 0 ):
 	PauseMenu.update_ability_items( abilities )
 	PlayerHud.update_ability_items( abilities )
-	selected_ability = 0
+	selected_ability = selected_index - 1
 	toggle_ability()
 	pass
 
@@ -112,5 +113,10 @@ func _on_game_loaded():
 	var new_abilities = SaveManager.current_save.abilities
 	abilities.assign(new_abilities) # Array -> Array[String]
 	setup_abilities()
+	pass
+	
+func _on_ability_acquired( ability : AbilityItemData ):
+	abilities[ ability.type ] = "True"
+	setup_abilities( selected_ability )
 	pass
 	

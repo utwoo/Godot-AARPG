@@ -61,11 +61,12 @@ func _set_quantity( value : int ):
 	_update_label()
 	pass
 	
+	
 func _update_texture():
 	if item_data and sprite:
 		sprite.texture = item_data.texture
-	pass	
-		
+	pass
+	
 func _update_label():
 	if label:
 		if quantity <= 1:
