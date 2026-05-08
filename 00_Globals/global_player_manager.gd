@@ -29,11 +29,13 @@ func set_player_health( _hp : int, _max_hp : int ):
 	player.update_hp( 0 )
 	pass
 	
-func set_player_stats( _level : int, _xp : int, _attack : int, _defense : int):
+func set_player_stats( _level : int, _xp : int, _attack : int, _defense : int, _arrow_count : int, _bomb_count : int):
 	player.level = _level
 	player.xp = _xp
 	player.attack = _attack
 	player.defense = _defense
+	player.arrow_count = _arrow_count
+	player.bomb_count = _bomb_count
 	pass
 	
 func reward_xp( _xp : int ):

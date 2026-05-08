@@ -16,6 +16,8 @@ var current_save: Dictionary = {
 		max_hp = 1,
 		position_x = 0,
 		position_y = 0,
+		arrow_count = 0,
+		bomb_count = 0
 	},
 	items = [],
 	persistence = [],
@@ -51,7 +53,13 @@ func load_game():
 	
 	PlayerManager.set_player_position( Vector2 ( current_save.player.position_x,  current_save.player.position_y ) )
 	PlayerManager.set_player_health( current_save.player.hp, current_save.player.max_hp )
-	PlayerManager.set_player_stats( current_save.player.level, current_save.player.xp, current_save.player.attack, current_save.player.defense)
+	PlayerManager.set_player_stats( 
+		current_save.player.level, 
+		current_save.player.xp, 
+		current_save.player.attack, 
+		current_save.player.defense,
+		current_save.player.arrow_count,
+		current_save.player.bomb_count)
 	PlayerManager.INVENTORY_DATA.parse_save_data( current_save.items )
 	QuestManager.current_quests = current_save.quests
 	
@@ -71,6 +79,8 @@ func update_player_data():
 	current_save.player.xp = p.xp
 	current_save.player.attack = p.attack
 	current_save.player.defense = p.defense
+	current_save.player.arrow_count = p.arrow_count
+	current_save.player.bomb_count = p.bomb_count
 	current_save.abilities = p.player_abilities.abilities
 	pass
 	
