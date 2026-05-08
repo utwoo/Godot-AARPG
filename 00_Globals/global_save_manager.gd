@@ -19,7 +19,8 @@ var current_save: Dictionary = {
 	},
 	items = [],
 	persistence = [],
-	quests = []
+	quests = [],
+	abilities = [ "", "", "", "" ]
 }
 
 func save_game():
@@ -70,6 +71,7 @@ func update_player_data():
 	current_save.player.xp = p.xp
 	current_save.player.attack = p.attack
 	current_save.player.defense = p.defense
+	current_save.abilities = p.player_abilities.abilities
 	pass
 	
 func update_scene_path():

@@ -24,6 +24,7 @@ func _ready():
 	PlayerHud.update_arrow_count( player.arrow_count )
 	PlayerHud.update_bomb_count( player.bomb_count )
 	setup_abilities()
+	SaveManager.game_loaded.connect( _on_game_loaded )
 	pass
 
 func _unhandled_input( event : InputEvent ):
@@ -103,4 +104,13 @@ func toggle_ability():
 func setup_abilities():
 	PauseMenu.update_ability_items( abilities )
 	PlayerHud.update_ability_items( abilities )
+	selected_ability = 0
+	toggle_ability()
 	pass
+
+func _on_game_loaded():
+	var new_abilities = SaveManager.current_save.abilities
+	abilities.assign(new_abilities) # Array -> Array[String]
+	setup_abilities()
+	pass
+	

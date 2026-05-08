@@ -36,6 +36,7 @@ var bomb_count : int = 10 : set = _set_bomb_count
 @onready var lift : State_Lift = $StateMachine/Lift
 @onready var carry : State_Carry = $StateMachine/Carry
 @onready var held_item : Node2D = $Sprite2D/HeldItem
+@onready var player_abilities: PlayAbilities = $Abilities
 
 signal direction_changed( new_direction : Vector2 )
 signal player_damaged( hurt_box : HurtBox )
