@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://p723lrsa8j5g" path="res://NPC/npc_behavior_wander.tscn" id="6_v72oj"]
 [ext_resource type="PackedScene" uid="uid://3uncbihj24t" path="res://Interactables/Dialog/DialogInteraction.tscn" id="7_q54cq"]
 [ext_resource type="Script" uid="uid://bbpr4a163b3pm" path="res://Interactables/Dialog/Scripts/dialog_text.gd" id="8_55lxj"]
-[ext_resource type="Script" uid="uid://bjtbonyix13gg" path="res://Interactables/Dialog/Scripts/cutscene_action_animation.gd" id="9_lry6g"]
 [ext_resource type="Resource" uid="uid://kgmaj2lxqcvk" path="res://NPC/00_NPCs/npc_hero.tres" id="9_n7k4n"]
+[ext_resource type="Script" uid="uid://bjtbonyix13gg" path="res://Interactables/Dialog/Scripts/cutscene_action_animation.gd" id="9_q54cq"]
 [ext_resource type="Script" uid="uid://kivcv8g8lbkx" path="res://Interactables/Dialog/Scripts/dialog_cutscene.gd" id="10_5waxo"]
+[ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="12_q54cq"]
+[ext_resource type="Script" uid="uid://com5wa0xn5vy6" path="res://Interactables/Dialog/Scripts/cutscene_action_move.gd" id="12_v72oj"]
 
 [sub_resource type="Animation" id="Animation_v72oj"]
 length = 0.001
@@ -40,7 +42,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 0.5]
 }
 
 [sub_resource type="Animation" id="Animation_q54cq"]
@@ -56,7 +58,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [0.5, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v72oj"]
@@ -89,20 +91,10 @@ npc_resource = ExtResource("5_lry6g")
 script = ExtResource("10_5waxo")
 metadata/_custom_type_script = "uid://kivcv8g8lbkx"
 
-[node name="CutsceneActionAnimation" type="Node" parent="NPC/DialogInteraction/DialogCutscene" unique_id=1434242848 node_paths=PackedStringArray("amination_player")]
-script = ExtResource("9_lry6g")
+[node name="CutsceneActionAnimation" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene" unique_id=23036735 node_paths=PackedStringArray("amination_player")]
+script = ExtResource("9_q54cq")
 amination_player = NodePath("../../../../AnimationPlayer")
 amination_name = "fade_to_black"
-metadata/_custom_type_script = "uid://bjtbonyix13gg"
-
-[node name="DialogCutscene2" type="Node" parent="NPC/DialogInteraction" unique_id=689444633]
-script = ExtResource("10_5waxo")
-metadata/_custom_type_script = "uid://kivcv8g8lbkx"
-
-[node name="CutsceneActionAnimation" type="Node" parent="NPC/DialogInteraction/DialogCutscene2" unique_id=1531220803 node_paths=PackedStringArray("amination_player")]
-script = ExtResource("9_lry6g")
-amination_player = NodePath("../../../../AnimationPlayer")
-amination_name = "fade_to_normal"
 metadata/_custom_type_script = "uid://bjtbonyix13gg"
 
 [node name="DialogText" type="Node" parent="NPC/DialogInteraction" unique_id=283351334]
@@ -119,6 +111,25 @@ text = "
 npc_info = ExtResource("9_n7k4n")
 metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
+[node name="DialogCutscene3" type="Node" parent="NPC/DialogInteraction" unique_id=1654451311]
+script = ExtResource("10_5waxo")
+playback_mode = 0
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionMove" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=637847771 node_paths=PackedStringArray("object_to_move")]
+position = Vector2(203, 75)
+script = ExtResource("12_v72oj")
+object_to_move = NodePath("../../..")
+transition_type = 4
+move_duration = 2.0
+metadata/_custom_type_script = "uid://com5wa0xn5vy6"
+
+[node name="CutsceneActionMove3" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=1872338782 node_paths=PackedStringArray("object_to_move")]
+position = Vector2(253, 186)
+script = ExtResource("12_v72oj")
+object_to_move = NodePath("../../../../Pot")
+metadata/_custom_type_script = "uid://com5wa0xn5vy6"
+
 [node name="DialogText3" type="Node" parent="NPC/DialogInteraction" unique_id=119262885]
 script = ExtResource("8_55lxj")
 text = "Nice Bro!
@@ -127,9 +138,22 @@ Happy to have a hero!
 npc_info = ExtResource("5_lry6g")
 metadata/_custom_type_script = "uid://bbpr4a163b3pm"
 
+[node name="DialogCutscene2" type="Node" parent="NPC/DialogInteraction" unique_id=689444633]
+script = ExtResource("10_5waxo")
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionAnimation" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene2" unique_id=1593538405 node_paths=PackedStringArray("amination_player")]
+script = ExtResource("9_q54cq")
+amination_player = NodePath("../../../../AnimationPlayer")
+amination_name = "fade_to_normal"
+metadata/_custom_type_script = "uid://bjtbonyix13gg"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=11452400]
 libraries/ = SubResource("AnimationLibrary_v72oj")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2054819596]
 energy = 0.0
 blend_mode = 1
+
+[node name="Pot" parent="." unique_id=575496767 instance=ExtResource("12_q54cq")]
+position = Vector2(82, 197)

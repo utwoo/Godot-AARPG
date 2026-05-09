@@ -1,5 +1,5 @@
 class_name CutsceneAction
-extends Node
+extends Node2D
 
 signal finished
 
