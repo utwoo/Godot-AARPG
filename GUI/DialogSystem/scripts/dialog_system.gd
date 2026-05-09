@@ -9,6 +9,7 @@ signal letter_added ( letter : String )
 var is_active : bool = false
 
 var waiting_for_choice : bool = false
+var waiting_for_cutscene : bool = false
 
 var dialog_items : Array[ DialogItem ]
 var dialog_item_index : int = 0
@@ -42,7 +43,7 @@ func _ready():
 
 
 func _unhandled_input( _event : InputEvent ):
-	if is_active == false:
+	if is_active == false or waiting_for_cutscene:
 		return
 	
 	if _event.is_action_pressed("interact"):
@@ -54,17 +55,24 @@ func _unhandled_input( _event : InputEvent ):
 			return
 		elif waiting_for_choice == true:
 			return
-		dialog_item_index += 1
-		if dialog_item_index < dialog_items.size():
-			start_dialog()
-		else:
-			hide_dialog()
+		
+		advance_dialog()
 	pass
 
+func advance_dialog():
+	dialog_item_index += 1
+	if dialog_item_index < dialog_items.size():
+		start_dialog()
+	else:
+		hide_dialog()
 
 func show_dialog( _items : Array[ DialogItem ] ):
 	is_active = true
-	dialog_ui.visible = true
+	if _items[ 0 ] is DialogCutscene:
+		dialog_ui.visible = false
+	else:	
+		dialog_ui.visible = true
+	
 	dialog_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 	dialog_items = _items
 	dialog_item_index = 0
@@ -95,8 +103,23 @@ func start_dialog():
 	if dialogItem is DialogText:
 		set_dialog_text (dialogItem as DialogText )
 	elif dialogItem is DialogChoice:
-		set_dialog_choice( dialogItem as DialogChoice)
+		set_dialog_choice( dialogItem as DialogChoice )
+	elif dialogItem is DialogCutscene:
+		set_dialog_cutscene( dialogItem as DialogCutscene )
 	pass
+
+func set_dialog_cutscene( dialogCutscene : DialogCutscene):
+	waiting_for_cutscene = true
+	choice_options.visible = false
+	dialog_ui.visible = false
+	dialogCutscene.play()
+	await dialogCutscene.finished
+	choice_options.visible = true
+	dialog_ui.visible = true
+	waiting_for_cutscene = false
+	advance_dialog()
+	pass
+	
 
 func set_dialog_text( dialogText : DialogText ):
 	content.text = dialogText.text

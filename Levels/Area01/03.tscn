@@ -1,0 +1,135 @@
+[gd_scene format=4 uid="uid://cf5wpjwalb6uc"]
+
+[ext_resource type="Script" uid="uid://cddu6i3h81t0s" path="res://Levels/Scripts/level.gd" id="1_u4p58"]
+[ext_resource type="PackedScene" uid="uid://liurpj8sy87g" path="res://TileMaps/grass-01.tscn" id="2_fiocf"]
+[ext_resource type="PackedScene" uid="uid://bn6m1d1rmbcu5" path="res://Levels/player_spawn.tscn" id="3_crp14"]
+[ext_resource type="PackedScene" uid="uid://d0xtl5nafmkfl" path="res://NPC/npc.tscn" id="4_5waxo"]
+[ext_resource type="Resource" uid="uid://didkq3x0ho8hy" path="res://NPC/00_NPCs/npc_01.tres" id="5_lry6g"]
+[ext_resource type="PackedScene" uid="uid://p723lrsa8j5g" path="res://NPC/npc_behavior_wander.tscn" id="6_v72oj"]
+[ext_resource type="PackedScene" uid="uid://3uncbihj24t" path="res://Interactables/Dialog/DialogInteraction.tscn" id="7_q54cq"]
+[ext_resource type="Script" uid="uid://bbpr4a163b3pm" path="res://Interactables/Dialog/Scripts/dialog_text.gd" id="8_55lxj"]
+[ext_resource type="Script" uid="uid://bjtbonyix13gg" path="res://Interactables/Dialog/Scripts/cutscene_action_animation.gd" id="9_lry6g"]
+[ext_resource type="Resource" uid="uid://kgmaj2lxqcvk" path="res://NPC/00_NPCs/npc_hero.tres" id="9_n7k4n"]
+[ext_resource type="Script" uid="uid://kivcv8g8lbkx" path="res://Interactables/Dialog/Scripts/dialog_cutscene.gd" id="10_5waxo"]
+
+[sub_resource type="Animation" id="Animation_v72oj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lry6g"]
+resource_name = "fade_to_black"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_q54cq"]
+resource_name = "fade_to_normal"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v72oj"]
+_data = {
+&"RESET": SubResource("Animation_v72oj"),
+&"fade_to_black": SubResource("Animation_lry6g"),
+&"fade_to_normal": SubResource("Animation_q54cq")
+}
+
+[node name="03" type="Node2D" unique_id=1719990180]
+script = ExtResource("1_u4p58")
+metadata/_custom_type_script = "uid://cddu6i3h81t0s"
+
+[node name="Grass01" parent="." unique_id=1503447829 instance=ExtResource("2_fiocf")]
+position = Vector2(-1, 0)
+tile_map_data = PackedByteArray("AAD/////AQAOAAUAAAD//wAAAQAOAAUAAAD//wEAAQAOAAUAAAD//wIAAQAOAAUAAAD//wMAAQAOAAUAAAD//wQAAQAOAAUAAAD//wUAAQAOAAUAAAD//wYAAQAOAAUAAAD//wcAAQAOAAUAAAD//wgAAQAOAAYAAAAAAP//AQACAAQAAAAAAAAAAQACAAUAAAAAAAEAAQACAAIAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQAKAAQAAAABAP//AAAAAAAAAAABAAAAAQACAAUAAAABAAEAAQACAAIAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAABAAgAAQAMAAQAAAACAP//AQALAAYAAAACAAAAAQADAAUAAAACAAEAAQACAAIAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAACAAYAAQAAAAAAAAACAAcAAQAAAAAAAAACAAgAAQANAAQAAAADAP//AQAMAAYAAAADAAAAAQAEAAUAAAADAAEAAQACAAIAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAADAAgAAQALAAQAAAAEAP//AQANAAYAAAAEAAAAAQADAAUAAAAEAAEAAQACAAIAAAAEAAIAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAAAAAAEAAgAAQAMAAQAAAAFAP//AQAEAAQAAAAFAAAAAQAEAAUAAAAFAAEAAQACAAIAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAgAAQANAAQAAAAGAP//AQACAAQAAAAGAAAAAQACAAUAAAAGAAEAAQACAAIAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAYAAQAAAAAAAAAGAAcAAQAAAAAAAAAGAAgAAQALAAQAAAAHAP//AQADAAQAAAAHAAEAAQACAAIAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAHAAgAAQAMAAQAAAAIAP//AQAEAAQAAAAIAAAAAQAEAAUAAAAIAAEAAQACAAIAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAIAAgAAQANAAQAAAAJAP//AQACAAQAAAAJAAAAAQACAAUAAAAJAAEAAQACAAIAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQALAAQAAAAKAP//AQADAAQAAAAKAAAAAQADAAUAAAAKAAEAAQACAAIAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAQAAQAAAAAAAAAKAAUAAQAAAAAAAAAKAAYAAQAAAAAAAAAKAAcAAQAAAAAAAAAKAAgAAQAMAAQAAAALAP//AQACAAQAAAALAAAAAQACAAUAAAALAAEAAQACAAIAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAALAAgAAQANAAQAAAAMAP//AQADAAQAAAAMAAEAAQACAAIAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAAMAAgAAQALAAQAAAANAP//AQAEAAQAAAANAAAAAQAEAAUAAAANAAEAAQACAAIAAAANAAIAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAANAAgAAQAMAAQAAAAOAP//AQAEAAQAAAAOAAAAAQAEAAUAAAAOAAEAAQACAAIAAAAOAAIAAQAAAAAAAAAOAAMAAQAAAAAAAAAOAAQAAQAAAAAAAAAOAAUAAQAAAAAAAAAOAAYAAQAAAAAAAAAOAAcAAQAAAAAAAAAOAAgAAQANAAQAAAAPAP//AQAOAAcAAAAPAAAAAQAKAAQAAAAPAAEAAQAKAAUAAAAPAAIAAQAKAAYAAAAPAAMAAQAKAAUAAAAPAAQAAQAKAAYAAAAPAAUAAQAKAAUAAAAPAAYAAQAKAAYAAAAPAAcAAQAKAAcAAAAPAAgAAQAOAAQAAAANAAMAAQAAAAAAAAAMAAAAAQADAAUAAAAHAAAAAQADAAUAAAAFAAIAAQAAAAAAAAAGAAIAAQAAAAAAAAA=")
+
+[node name="PlayerSpawn" parent="." unique_id=55238236 instance=ExtResource("3_crp14")]
+position = Vector2(127, 148)
+
+[node name="NPC" parent="." unique_id=1353822462 instance=ExtResource("4_5waxo")]
+position = Vector2(302, 145)
+npc_resource = ExtResource("5_lry6g")
+
+[node name="NPCBehaviorWander" parent="NPC" unique_id=495959528 instance=ExtResource("6_v72oj")]
+
+[node name="DialogInteraction" parent="NPC" unique_id=319956211 instance=ExtResource("7_q54cq")]
+
+[node name="DialogCutscene" type="Node" parent="NPC/DialogInteraction" unique_id=1438450262]
+script = ExtResource("10_5waxo")
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionAnimation" type="Node" parent="NPC/DialogInteraction/DialogCutscene" unique_id=1434242848 node_paths=PackedStringArray("amination_player")]
+script = ExtResource("9_lry6g")
+amination_player = NodePath("../../../../AnimationPlayer")
+amination_name = "fade_to_black"
+metadata/_custom_type_script = "uid://bjtbonyix13gg"
+
+[node name="DialogCutscene2" type="Node" parent="NPC/DialogInteraction" unique_id=689444633]
+script = ExtResource("10_5waxo")
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionAnimation" type="Node" parent="NPC/DialogInteraction/DialogCutscene2" unique_id=1531220803 node_paths=PackedStringArray("amination_player")]
+script = ExtResource("9_lry6g")
+amination_player = NodePath("../../../../AnimationPlayer")
+amination_name = "fade_to_normal"
+metadata/_custom_type_script = "uid://bjtbonyix13gg"
+
+[node name="DialogText" type="Node" parent="NPC/DialogInteraction" unique_id=283351334]
+script = ExtResource("8_55lxj")
+text = "
+Hi, [b]Hero[/b] is that you?"
+npc_info = ExtResource("5_lry6g")
+metadata/_custom_type_script = "uid://bbpr4a163b3pm"
+
+[node name="DialogText2" type="Node" parent="NPC/DialogInteraction" unique_id=518477265]
+script = ExtResource("8_55lxj")
+text = "
+[wave]Heck yeah it's me![/wave]"
+npc_info = ExtResource("9_n7k4n")
+metadata/_custom_type_script = "uid://bbpr4a163b3pm"
+
+[node name="DialogText3" type="Node" parent="NPC/DialogInteraction" unique_id=119262885]
+script = ExtResource("8_55lxj")
+text = "Nice Bro!
+Happy to have a hero!
+"
+npc_info = ExtResource("5_lry6g")
+metadata/_custom_type_script = "uid://bbpr4a163b3pm"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=11452400]
+libraries/ = SubResource("AnimationLibrary_v72oj")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2054819596]
+energy = 0.0
+blend_mode = 1
