@@ -76,3 +76,11 @@ func interact():
 	
 func shake_camera( trauma : float = 1 ):
 	camera_shook.emit( clampf( trauma, 0, 3 ) )
+	
+func reset_camera_on_player():
+	var camera : Camera2D = get_viewport().get_camera_2d()
+	if camera:
+		if camera.get_parent() != PlayerManager.player:
+			camera.reparent( PlayerManager.player )
+			camera.position = Vector2.ZERO
+		pass

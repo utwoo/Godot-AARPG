@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://kivcv8g8lbkx" path="res://Interactables/Dialog/Scripts/dialog_cutscene.gd" id="10_5waxo"]
 [ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="12_q54cq"]
 [ext_resource type="Script" uid="uid://com5wa0xn5vy6" path="res://Interactables/Dialog/Scripts/cutscene_action_move.gd" id="12_v72oj"]
+[ext_resource type="Script" uid="uid://c1r85ka2ekppi" path="res://Interactables/Dialog/Scripts/cutscene_action_camera.gd" id="13_55lxj"]
 
 [sub_resource type="Animation" id="Animation_v72oj"]
 length = 0.001
@@ -129,6 +130,12 @@ position = Vector2(253, 186)
 script = ExtResource("12_v72oj")
 object_to_move = NodePath("../../../../Pot")
 metadata/_custom_type_script = "uid://com5wa0xn5vy6"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=54600382]
+position = Vector2(26, 57)
+script = ExtResource("13_55lxj")
+move_duration = 2.0
+metadata/_custom_type_script = "uid://c1r85ka2ekppi"
 
 [node name="DialogText3" type="Node" parent="NPC/DialogInteraction" unique_id=119262885]
 script = ExtResource("8_55lxj")

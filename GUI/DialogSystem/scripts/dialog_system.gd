@@ -92,6 +92,7 @@ func hide_dialog():
 	choice_options.visible = false
 	get_tree().paused = false
 	finished.emit()
+	PlayerManager.reset_camera_on_player()
 	pass
 
 
