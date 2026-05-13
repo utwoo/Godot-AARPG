@@ -38,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://b41hus737slns" path="res://Player/Audio/grapple_stick.wav" id="28_0x1ka"]
 [ext_resource type="AudioStream" uid="uid://domo3sw4dx68n" path="res://Player/Audio/grapple_clang.wav" id="29_1xl3u"]
 [ext_resource type="FontFile" uid="uid://cej52riqklxlx" path="res://GUI/DialogSystem/fronts/m5x7.ttf" id="29_y1muo"]
+[ext_resource type="Script" uid="uid://dxondf47d3rem" path="res://Player/Scripts/state_cutscene.gd" id="30_6k1wf"]
 [ext_resource type="PackedScene" uid="uid://cse133xixq2rc" path="res://GeneralNodes/Footstep_audio/footstep_audio.tscn" id="33_kqrd2"]
 [ext_resource type="AudioStream" uid="uid://cwdudrk0jdnyy" path="res://GeneralNodes/Footstep_audio/footstep_03.wav" id="34_kqrd2"]
 [ext_resource type="AudioStream" uid="uid://q7irfts1i7bt" path="res://GeneralNodes/Footstep_audio/footstep_01.wav" id="34_ypisy"]
@@ -2036,6 +2037,10 @@ grapple_speed = 500.0
 grapple_fire_audio = ExtResource("27_w2f47")
 grapple_stick_audio = ExtResource("28_0x1ka")
 grapple_bounce_audio = ExtResource("29_1xl3u")
+
+[node name="Cutscene" type="Node" parent="StateMachine" unique_id=958988048]
+script = ExtResource("30_6k1wf")
+metadata/_custom_type_script = "uid://bcw23jf0t7rw"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1685489216]
 visible = false

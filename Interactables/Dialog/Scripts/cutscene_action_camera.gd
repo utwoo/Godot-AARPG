@@ -57,6 +57,6 @@ func _on_tween_finished() -> void:
 
 func _draw() -> void:
 	if Engine.is_editor_hint():
-		draw_circle( Vector2.ZERO, 3, Color.AQUA )
+		draw_circle( Vector2.ZERO, 3, Color.DODGER_BLUE )
 		draw_circle( Vector2.ZERO, 10, Color(0.0, 0.0, 1.0, 0.5), false, 1.0 )
 	pass
