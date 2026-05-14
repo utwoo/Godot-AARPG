@@ -11,10 +11,16 @@
 [ext_resource type="Resource" uid="uid://kgmaj2lxqcvk" path="res://NPC/00_NPCs/npc_hero.tres" id="9_n7k4n"]
 [ext_resource type="Script" uid="uid://bjtbonyix13gg" path="res://Interactables/Dialog/Scripts/cutscene_action_animation.gd" id="9_q54cq"]
 [ext_resource type="Script" uid="uid://kivcv8g8lbkx" path="res://Interactables/Dialog/Scripts/dialog_cutscene.gd" id="10_5waxo"]
+[ext_resource type="Script" uid="uid://3rxgw8senw1v" path="res://Interactables/Dialog/Scripts/cutscene_action_music.gd" id="12_a033e"]
 [ext_resource type="PackedScene" uid="uid://2euk4sitg7jb" path="res://Props/Pots/Pot.tscn" id="12_q54cq"]
 [ext_resource type="Script" uid="uid://com5wa0xn5vy6" path="res://Interactables/Dialog/Scripts/cutscene_action_move.gd" id="12_v72oj"]
 [ext_resource type="Script" uid="uid://c1r85ka2ekppi" path="res://Interactables/Dialog/Scripts/cutscene_action_camera.gd" id="13_55lxj"]
+[ext_resource type="AudioStream" uid="uid://dkt6x6g66w3t0" path="res://Levels/Music/example_music_03.ogg" id="13_a033e"]
 [ext_resource type="Script" uid="uid://b2l3vn7s8atyw" path="res://Interactables/Dialog/Scripts/cutscene_action_player.gd" id="14_n7k4n"]
+[ext_resource type="PackedScene" uid="uid://bep2s2mpj6yt4" path="res://GeneralNodes/AreaTrigger/area_trigger.tscn" id="18_2v1i7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v1i7"]
+size = Vector2(71, 224)
 
 [sub_resource type="Animation" id="Animation_v72oj"]
 length = 0.001
@@ -77,16 +83,80 @@ metadata/_custom_type_script = "uid://cddu6i3h81t0s"
 [node name="Grass01" parent="." unique_id=1503447829 instance=ExtResource("2_fiocf")]
 tile_map_data = PackedByteArray("AAD/////AQAOAAUAAAD//wAAAQAOAAUAAAD//wEAAQAOAAUAAAD//wIAAQAOAAUAAAD//wMAAQAOAAUAAAD//wQAAQAOAAUAAAD//wUAAQAOAAUAAAD//wYAAQAOAAUAAAD//wcAAQAOAAUAAAD//wgAAQAOAAYAAAAAAP//AQACAAQAAAAAAAAAAQACAAUAAAAAAAEAAQACAAIAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQAKAAQAAAABAP//AAAAAAAAAAABAAAAAQACAAUAAAABAAEAAQACAAIAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAABAAgAAQAMAAQAAAACAP//AQALAAYAAAACAAAAAQADAAUAAAACAAEAAQACAAIAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAACAAYAAQAAAAAAAAACAAcAAQAAAAAAAAACAAgAAQANAAQAAAADAP//AQAMAAYAAAADAAAAAQAEAAUAAAADAAEAAQACAAIAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAADAAgAAQALAAQAAAAEAP//AQANAAYAAAAEAAAAAQADAAUAAAAEAAEAAQACAAIAAAAEAAIAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAAAAAAEAAgAAQAMAAQAAAAFAP//AQAEAAQAAAAFAAAAAQAEAAUAAAAFAAEAAQACAAIAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAgAAQANAAQAAAAGAP//AQACAAQAAAAGAAAAAQACAAUAAAAGAAEAAQACAAIAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAYAAQAAAAAAAAAGAAcAAQAAAAAAAAAGAAgAAQALAAQAAAAHAP//AQADAAQAAAAHAAEAAQACAAIAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAHAAgAAQAMAAQAAAAIAP//AQAEAAQAAAAIAAAAAQAEAAUAAAAIAAEAAQACAAIAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAIAAgAAQANAAQAAAAJAP//AQACAAQAAAAJAAAAAQACAAUAAAAJAAEAAQACAAIAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQALAAQAAAAKAP//AQADAAQAAAAKAAAAAQADAAUAAAAKAAEAAQACAAIAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAQAAQAAAAAAAAAKAAUAAQAAAAAAAAAKAAYAAQAAAAAAAAAKAAcAAQAAAAAAAAAKAAgAAQAMAAQAAAALAP//AQACAAQAAAALAAAAAQACAAUAAAALAAEAAQACAAIAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAALAAgAAQANAAQAAAAMAP//AQADAAQAAAAMAAEAAQACAAIAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAAMAAgAAQALAAQAAAANAP//AQAEAAQAAAANAAAAAQAEAAUAAAANAAEAAQACAAIAAAANAAIAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAANAAgAAQAMAAQAAAAOAP//AQAEAAQAAAAOAAAAAQAEAAUAAAAOAAEAAQACAAIAAAAOAAIAAQAAAAAAAAAOAAMAAQAAAAAAAAAOAAQAAQAAAAAAAAAOAAUAAQAAAAAAAAAOAAYAAQAAAAAAAAAOAAcAAQAAAAAAAAAOAAgAAQANAAQAAAAPAP//AQAOAAcAAAAPAAAAAQAKAAQAAAAPAAEAAQAKAAUAAAAPAAIAAQAKAAYAAAAPAAMAAQAKAAUAAAAPAAQAAQAKAAYAAAAPAAUAAQAKAAUAAAAPAAYAAQAKAAYAAAAPAAcAAQAKAAcAAAAPAAgAAQAOAAQAAAANAAMAAQAAAAAAAAAMAAAAAQADAAUAAAAHAAAAAQADAAUAAAAFAAIAAQAAAAAAAAAGAAIAAQAAAAAAAAA=")
 
+[node name="AreaTrigger" parent="." unique_id=1267649995 instance=ExtResource("18_2v1i7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTrigger" unique_id=1315840358]
+position = Vector2(267.5, 144)
+shape = SubResource("RectangleShape2D_2v1i7")
+
+[node name="DialogInteraction" parent="AreaTrigger" unique_id=319956211 instance=ExtResource("7_q54cq")]
+
+[node name="DialogCutscene" type="Node" parent="AreaTrigger/DialogInteraction" unique_id=1483069858]
+script = ExtResource("10_5waxo")
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionAnimation" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene" unique_id=175454421 node_paths=PackedStringArray("amination_player")]
+script = ExtResource("9_q54cq")
+amination_player = NodePath("../../../../AnimationPlayer")
+amination_name = "fade_to_black"
+metadata/_custom_type_script = "uid://bjtbonyix13gg"
+
+[node name="DialogCutscene3" type="Node" parent="AreaTrigger/DialogInteraction" unique_id=1528474685]
+script = ExtResource("10_5waxo")
+playback_mode = 0
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionMusic" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene3" unique_id=1254617439]
+script = ExtResource("12_a033e")
+track = ExtResource("13_a033e")
+metadata/_custom_type_script = "uid://3rxgw8senw1v"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene3" unique_id=500508009]
+position = Vector2(379, 57)
+script = ExtResource("13_55lxj")
+move_duration = 2.0
+metadata/_custom_type_script = "uid://c1r85ka2ekppi"
+
+[node name="CutsceneActionPlayer" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene3" unique_id=1800785399]
+position = Vector2(22, 58)
+script = ExtResource("14_n7k4n")
+timing_method = 1
+metadata/_custom_type_script = "uid://b2l3vn7s8atyw"
+
+[node name="CutsceneActionMove" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene3" unique_id=490485519 node_paths=PackedStringArray("object_to_move")]
+position = Vector2(203, 75)
+script = ExtResource("12_v72oj")
+object_to_move = NodePath("../../../../NPC")
+transition_type = 4
+move_duration = 2.0
+metadata/_custom_type_script = "uid://com5wa0xn5vy6"
+
+[node name="CutsceneActionMove3" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene3" unique_id=584234350 node_paths=PackedStringArray("object_to_move")]
+position = Vector2(253, 186)
+script = ExtResource("12_v72oj")
+object_to_move = NodePath("../../../../Pot")
+metadata/_custom_type_script = "uid://com5wa0xn5vy6"
+
+[node name="DialogCutscene2" type="Node" parent="AreaTrigger/DialogInteraction" unique_id=841977275]
+script = ExtResource("10_5waxo")
+metadata/_custom_type_script = "uid://kivcv8g8lbkx"
+
+[node name="CutsceneActionAnimation" type="Node2D" parent="AreaTrigger/DialogInteraction/DialogCutscene2" unique_id=777883415 node_paths=PackedStringArray("amination_player")]
+script = ExtResource("9_q54cq")
+amination_player = NodePath("../../../../AnimationPlayer")
+amination_name = "fade_to_normal"
+metadata/_custom_type_script = "uid://bjtbonyix13gg"
+
 [node name="PlayerSpawn" parent="." unique_id=55238236 instance=ExtResource("3_crp14")]
-position = Vector2(355, 219)
+position = Vector2(76, 130)
 
 [node name="NPC" parent="." unique_id=1353822462 instance=ExtResource("4_5waxo")]
-position = Vector2(437, 187)
+position = Vector2(387, 140)
 npc_resource = ExtResource("5_lry6g")
 
 [node name="NPCBehaviorWander" parent="NPC" unique_id=495959528 instance=ExtResource("6_v72oj")]
 
-[node name="DialogInteraction" parent="NPC" unique_id=319956211 instance=ExtResource("7_q54cq")]
+[node name="DialogInteraction" parent="NPC" unique_id=756262965 instance=ExtResource("7_q54cq")]
 
 [node name="DialogCutscene" type="Node" parent="NPC/DialogInteraction" unique_id=1438450262]
 script = ExtResource("10_5waxo")
@@ -111,37 +181,6 @@ text = "
 [wave]Heck yeah it's me![/wave]"
 npc_info = ExtResource("9_n7k4n")
 metadata/_custom_type_script = "uid://bbpr4a163b3pm"
-
-[node name="DialogCutscene3" type="Node" parent="NPC/DialogInteraction" unique_id=1654451311]
-script = ExtResource("10_5waxo")
-playback_mode = 0
-metadata/_custom_type_script = "uid://kivcv8g8lbkx"
-
-[node name="CutsceneActionCamera" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=54600382]
-position = Vector2(379, 57)
-script = ExtResource("13_55lxj")
-move_duration = 2.0
-metadata/_custom_type_script = "uid://c1r85ka2ekppi"
-
-[node name="CutsceneActionPlayer" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=907516126]
-position = Vector2(22, 58)
-script = ExtResource("14_n7k4n")
-timing_method = 1
-metadata/_custom_type_script = "uid://b2l3vn7s8atyw"
-
-[node name="CutsceneActionMove" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=637847771 node_paths=PackedStringArray("object_to_move")]
-position = Vector2(203, 75)
-script = ExtResource("12_v72oj")
-object_to_move = NodePath("../../..")
-transition_type = 4
-move_duration = 2.0
-metadata/_custom_type_script = "uid://com5wa0xn5vy6"
-
-[node name="CutsceneActionMove3" type="Node2D" parent="NPC/DialogInteraction/DialogCutscene3" unique_id=1872338782 node_paths=PackedStringArray("object_to_move")]
-position = Vector2(253, 186)
-script = ExtResource("12_v72oj")
-object_to_move = NodePath("../../../../Pot")
-metadata/_custom_type_script = "uid://com5wa0xn5vy6"
 
 [node name="DialogText3" type="Node" parent="NPC/DialogInteraction" unique_id=119262885]
 script = ExtResource("8_55lxj")
@@ -169,4 +208,4 @@ energy = 0.0
 blend_mode = 1
 
 [node name="Pot" parent="." unique_id=575496767 instance=ExtResource("12_q54cq")]
-position = Vector2(82, 197)
+position = Vector2(388, 213)

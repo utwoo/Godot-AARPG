@@ -69,10 +69,16 @@ func advance_dialog():
 
 func show_dialog( _items : Array[ DialogItem ] ):
 	is_active = true
-	if not _items.is_empty() and _items[ 0 ] is DialogCutscene:
-		dialog_ui.visible = false
-	else:	
-		dialog_ui.visible = true
+	
+	if _items:
+		if not _items.is_empty() and _items[ 0 ] is DialogCutscene:
+			dialog_ui.visible = false
+		else:
+			dialog_ui.visible = true
+			
+		for i in _items:
+			if i is DialogCutscene:
+				$CutsceneUI/AnimationPlayer.play("start")
 	
 	dialog_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 	dialog_items = _items
@@ -95,6 +101,7 @@ func hide_dialog():
 	get_tree().paused = false
 	finished.emit()
 	PlayerManager.reset_camera_on_player()
+	$CutsceneUI/AnimationPlayer.play("end")
 	pass
 
 
